@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>NIR</groupId>
+    <artifactId>Invoice-Generator</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <testng.version>6.10</testng.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
+        <selenium-server.version>3.141.59</selenium-server.version>
+        <selenium-support.version>3.141.59</selenium-support.version>
+        <selenium-api.version>3.141.59</selenium-api.version>
+        <selenium-remote-driver.version>3.141.59</selenium-remote-driver.version>
+        <selenium-firefox-driver.version>3.141.59</selenium-firefox-driver.version>
+        <selenium-chrome-driver.version>3.141.59</selenium-chrome-driver.version>
+        <lombok.version>1.18.4</lombok.version>
+        <generex.version>1.0.2</generex.version>
+        <htmlunit.version>2.13</htmlunit.version>
+        <jbrowserdriver.version>1.0.1</jbrowserdriver.version>
+        <webdrivermanager.version>3.0.0</webdrivermanager.version>
+    </properties>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>com.github.mifmif</groupId>
+                <artifactId>generex</artifactId>
+                <version>${generex.version}</version>
+            </dependency>
+
+        </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.0</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    
+</project>
