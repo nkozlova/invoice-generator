@@ -5,10 +5,10 @@ import java.awt.*;
 
 public class CInvoiceDates implements IModel {
 
-    private static final String INVOICE_DATA_DEF = "\tInvoiceDate: ";
-    private static final String COMMAND_DATA_DEF = "\tCommandDate: ";
-    private static final String EXPEDITION_DATA_DEF = "\tExpeditionDate: ";
-    private static final String PAYMENT_DATA_DEF = "\tPaymentDate: ";
+    private static final String INVOICE_DATA_DEF = "  InvoiceDate: ";
+    private static final String COMMAND_DATA_DEF = "  CommandDate: ";
+    private static final String EXPEDITION_DATA_DEF = "  ExpeditionDate: ";
+    private static final String PAYMENT_DATA_DEF = "  PaymentDate: ";
 
     // TODO - посл-ть и проверка на корректность
     private СCoordinatedString invoiceDate = new СCoordinatedString();
@@ -38,19 +38,11 @@ public class CInvoiceDates implements IModel {
     }
 
     @Override
-    public void Show() {
-        System.out.print( INVOICE_DATA_DEF.concat( invoiceDate.Show() ) );
-        System.out.print( COMMAND_DATA_DEF.concat( commandDate.Show() ) );
-        System.out.print( EXPEDITION_DATA_DEF.concat( expeditionDate.Show() ) );
-        System.out.print( PAYMENT_DATA_DEF.concat( paymentDate.Show() ) );
-    }
-
-    @Override
     public String GetData() {
-        return INVOICE_DATA_DEF.concat( invoiceDate.Show() ).
-                concat( COMMAND_DATA_DEF ).concat( commandDate.Show() ).
-                concat( EXPEDITION_DATA_DEF ).concat( expeditionDate.Show() ).
-                concat( PAYMENT_DATA_DEF ).concat( paymentDate.Show() );
+        return invoiceDate.Show( INVOICE_DATA_DEF ).
+                concat( commandDate.Show( COMMAND_DATA_DEF ) ).
+                concat( expeditionDate.Show( EXPEDITION_DATA_DEF ) ).
+                concat( paymentDate.Show( PAYMENT_DATA_DEF ) );
     }
 
     @Override

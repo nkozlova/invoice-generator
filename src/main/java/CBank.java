@@ -6,11 +6,11 @@ import java.awt.*;
 
 public class CBank implements IModel {
 
-    private static final String NAME_DEF = "\t\tName: ";
-    private static final String IBAN_DEF = "\t\tIban: ";
-    private static final String SWIFT_DEF = "\t\tSwift: ";
-    private static final String SORT_CODE_DEF = "\t\tSortCode: ";
-    private static final String BANK_ACCOUNT_DEF = "\t\tBankAccount: ";
+    private static final String NAME_DEF = "    Name: ";
+    private static final String IBAN_DEF = "    Iban: ";
+    private static final String SWIFT_DEF = "    Swift: ";
+    private static final String SORT_CODE_DEF = "    SortCode: ";
+    private static final String BANK_ACCOUNT_DEF = "    BankAccount: ";
     private static final String INT_PATTERN = "\\d+";
     private static final String STR_PATTERN = "[A-Z]+";
 
@@ -43,21 +43,12 @@ public class CBank implements IModel {
     }
 
     @Override
-    public void Show() {
-        System.out.print( NAME_DEF.concat( name.Show() ) );
-        System.out.print( IBAN_DEF.concat( iban.Show() ) );
-        System.out.print( SWIFT_DEF.concat( swift.Show() ) );
-        System.out.print( SORT_CODE_DEF.concat( sortCode.Show() ) );
-        System.out.print( BANK_ACCOUNT_DEF.concat( bankAccount.Show() ) );
-    }
-
-    @Override
     public String GetData() {
-        return NAME_DEF.concat( name.Show() ).
-                concat( IBAN_DEF ).concat( iban.Show() ).
-                concat( SWIFT_DEF ).concat( swift.Show() ).
-                concat( SORT_CODE_DEF ).concat( sortCode.Show() ).
-                concat( BANK_ACCOUNT_DEF ).concat( bankAccount.Show() );
+        return name.Show( NAME_DEF ).
+                concat( iban.Show( IBAN_DEF ) ).
+                concat( swift.Show( SWIFT_DEF ) ).
+                concat( sortCode.Show( SORT_CODE_DEF ) ).
+                concat( bankAccount.Show( BANK_ACCOUNT_DEF ) );
     }
 
     @Override

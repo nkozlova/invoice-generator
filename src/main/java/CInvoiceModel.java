@@ -12,12 +12,11 @@ import java.util.List;
 
 public class CInvoiceModel implements IModel {
 
-    private static final String DATES_DEF = "Dates {\n";
-    private static final String NUMBERS_DEF = "Numbers {\n";
-    private static final String PAYMENTS_INFO_DEF = "PaymentsInfo {\n";
-    private static final String PRODUCT_CONTAINER_DEF = "ProductContainer {\n";
-    private static final String LEFT_BRACKET = " {\n";
-    private static final String RIGHT_BRACKET = "}\n";
+    private static final String DATES_DEF = "Dates:\n";
+    private static final String NUMBERS_DEF = "Numbers:\n";
+    private static final String PAYMENTS_INFO_DEF = "PaymentsInfo:\n";
+    private static final String COMPANIES_DEF = "Companies:\n";
+    private static final String PRODUCT_CONTAINER_DEF = "ProductContainer:\n";
     private static final Boolean USE_ARIAL = CGraphicsHelper.IsRandomTrue( 0.5 ); // Arial или TNR
     private static final String FONT_NAME = USE_ARIAL ? "Arial" : "Times New Roman";
     private static final Font DEFAULT_FONT = new Font( FONT_NAME, 0, USE_ARIAL ? 13 : 14 );
@@ -66,81 +65,31 @@ public class CInvoiceModel implements IModel {
         productContainer.Generate();
     }
 
-    @Override
-    public void Show() {
-        System.out.print( DATES_DEF );
-        invoiceDates.Show();
-        System.out.print( RIGHT_BRACKET );
-
-        System.out.print( NUMBERS_DEF );
-        invoiceNumbers.Show();
-        System.out.print( RIGHT_BRACKET );
-
-        System.out.print( PAYMENTS_INFO_DEF );
-        paymentInfos.Show();
-        System.out.print( RIGHT_BRACKET );
-
-        if( USE_BU ) {
-            System.out.print( bu.GetRole().concat( LEFT_BRACKET ) );
-            bu.Show();
-            System.out.print( RIGHT_BRACKET );
-        }
-
-        System.out.print( vendor.GetRole().concat( LEFT_BRACKET ) );
-        vendor.Show();
-        System.out.print( RIGHT_BRACKET );
-
-        if( USE_SHIP_TO ) {
-            System.out.print( shipTo.GetRole().concat( LEFT_BRACKET ) );
-            shipTo.Show();
-            System.out.print( RIGHT_BRACKET );
-        }
-
-        if( USE_BILL_TO ) {
-            System.out.print( billTo.GetRole().concat( LEFT_BRACKET ) );
-            billTo.Show();
-            System.out.print( RIGHT_BRACKET );
-        }
-
-        if( USE_SHIPPER ) {
-            System.out.print( shipper.GetRole().concat( LEFT_BRACKET ) );
-            shipper.Show();
-            System.out.print( RIGHT_BRACKET );
-        }
-
-        if( USE_REMIT_TO ) {
-            System.out.print( remitTo.GetRole().concat( LEFT_BRACKET ) );
-            remitTo.Show();
-            System.out.print( RIGHT_BRACKET );
-        }
-
-        System.out.print( PRODUCT_CONTAINER_DEF );
-        productContainer.Show();
-        System.out.print( RIGHT_BRACKET );
-    }
+    public void Show() { System.out.print( GetData() ); }
 
     @Override
     public String GetData() {
-        String res = DATES_DEF.concat( invoiceDates.GetData() ).concat( RIGHT_BRACKET ).
-                concat( NUMBERS_DEF ).concat( invoiceNumbers.GetData() ).concat( RIGHT_BRACKET ).
-                concat( PAYMENTS_INFO_DEF ).concat( paymentInfos.GetData() ).concat( RIGHT_BRACKET );
+        String res = DATES_DEF.concat( invoiceDates.GetData() ).
+                concat( NUMBERS_DEF ).concat( invoiceNumbers.GetData() ).
+                concat( PAYMENTS_INFO_DEF ).concat( paymentInfos.GetData() ).
+                concat( COMPANIES_DEF );
         if( USE_BU ) {
-            res = res.concat( bu.GetRole() ).concat( LEFT_BRACKET ).concat( bu.GetData() ).concat( RIGHT_BRACKET );
+            res = res.concat( bu.GetData() );
         }
-        res = res.concat( vendor.GetRole() ).concat( LEFT_BRACKET ).concat( vendor.GetData() ).concat( RIGHT_BRACKET );
+        res = res.concat( vendor.GetData() );
         if( USE_SHIP_TO ) {
-            res = res.concat( shipTo.GetRole() ).concat( LEFT_BRACKET ).concat( shipTo.GetData() ).concat( RIGHT_BRACKET );
+            res = res.concat( shipTo.GetData() );
         }
         if( USE_BILL_TO ) {
-            res = res.concat( billTo.GetRole() ).concat( LEFT_BRACKET ).concat( billTo.GetData() ).concat( RIGHT_BRACKET );
+            res = res.concat( billTo.GetData() );
         }
         if( USE_SHIPPER ) {
-            res = res.concat( shipper.GetRole() ).concat( LEFT_BRACKET ).concat( shipper.GetData() ).concat( RIGHT_BRACKET );
+            res = res.concat( shipper.GetData() );
         }
         if( USE_REMIT_TO ) {
-            res = res.concat( remitTo.GetRole() ).concat( LEFT_BRACKET ).concat( remitTo.GetData() ).concat( RIGHT_BRACKET );
+            res = res.concat( remitTo.GetData() );
         }
-        return res.concat( PRODUCT_CONTAINER_DEF ).concat( productContainer.GetData() ).concat( RIGHT_BRACKET );
+        return res.concat( PRODUCT_CONTAINER_DEF ).concat( productContainer.GetData() );
     }
 
     @Override

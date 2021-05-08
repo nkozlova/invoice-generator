@@ -12,14 +12,14 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class CCompany implements IModel {
 
-    private static final String NAME_DEF = "\tName: ";
-    private static final String PHONE_DEF = "\tPhone: ";
-    private static final String EMAIL_DEF = "\tEmail: ";
-    private static final String WEBSITE_DEF = "\tWebsite: ";
-    private static final String ADDRESS_DEF = "\tAddress {\n";
-    private static final String CLOSE_BRACKET_DEF = "\t}\n";
-    private static final String NUMBERS_DEF = "\tNumbers {\n";
-    private static final String BANK_DEF = "\tBank {\n";
+    private static final String ROLE_DEF = "- Role: ";
+    private static final String NAME_DEF = "  Name: ";
+    private static final String PHONE_DEF = "  Phone: ";
+    private static final String EMAIL_DEF = "  Email: ";
+    private static final String WEBSITE_DEF = "  Website: ";
+    private static final String ADDRESS_DEF = "  Address:\n";
+    private static final String NUMBERS_DEF = "  Numbers:\n";
+    private static final String BANK_DEF = "  Bank:\n";
     private static final String EMPTY_STR = "";
     private static final String DELIMITER = ",";
     private static final String GB_PHONE_PATTERN = "((08|09) ([0-9]){3} ([0-9]{4}))"; // Шаблон номеров Англии
@@ -49,17 +49,17 @@ public class CCompany implements IModel {
     public String GetRole() {
         switch( role ) {
             case CR_BU:
-                return "Bisness Unit";
+                return "Bisness Unit\n";
             case CR_Vendor:
-                return "Vendor";
+                return "Vendor\n";
             case CR_ShipTo:
-                return "Ship To";
+                return "Ship To\n";
             case CR_BillTo:
-                return "Bill To";
+                return "Bill To\n";
             case CR_Shipper:
-                return "Shipper";
+                return "Shipper\n";
             case CR_RemitTo:
-                return "Remit To";
+                return "Remit To\n";
         }
         assert( false );
         return "";
@@ -144,34 +144,15 @@ public class CCompany implements IModel {
     }
 
     @Override
-    public void Show() {
-        System.out.print( NAME_DEF.concat( name.Show() ) );
-        System.out.print( PHONE_DEF.concat( phone.Show() ) );
-        System.out.print( EMAIL_DEF.concat( email.Show() ) );
-        System.out.print( WEBSITE_DEF.concat( webSite.Show() ) );
-
-        System.out.print( ADDRESS_DEF );
-        address.Show();
-        System.out.print( CLOSE_BRACKET_DEF );
-
-        System.out.print( NUMBERS_DEF );
-        idNumbers.Show();
-        System.out.print( CLOSE_BRACKET_DEF );
-
-        System.out.print( BANK_DEF );
-        bank.Show();
-        System.out.print( CLOSE_BRACKET_DEF );
-    }
-
-    @Override
     public String GetData() {
-        return NAME_DEF.concat( name.Show() ).
-                concat( PHONE_DEF ).concat( phone.Show() ).
-                concat( EMAIL_DEF ).concat( email.Show() ).
-                concat( WEBSITE_DEF ).concat( webSite.Show() ).
-                concat( ADDRESS_DEF ).concat( address.GetData() ).concat( CLOSE_BRACKET_DEF ).
-                concat( NUMBERS_DEF ).concat( idNumbers.GetData() ).concat( CLOSE_BRACKET_DEF ).
-                concat( BANK_DEF ).concat( bank.GetData() ).concat( CLOSE_BRACKET_DEF );
+        return ROLE_DEF.concat( GetRole() ).
+                concat( name.Show( NAME_DEF ) ).
+                concat( phone.Show( PHONE_DEF ) ).
+                concat( email.Show( EMAIL_DEF ) ).
+                concat( webSite.Show( WEBSITE_DEF ) ).
+                concat( ADDRESS_DEF ).concat( address.GetData() ).
+                concat( NUMBERS_DEF ).concat( idNumbers.GetData() ).
+                concat( BANK_DEF ).concat( bank.GetData() );
     }
 
     @Override

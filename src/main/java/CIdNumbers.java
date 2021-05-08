@@ -7,12 +7,10 @@ import java.awt.*;
 
 public class CIdNumbers implements IModel {
 
-    private static final String CID_DEF = "\t\tCID: ";
-    private static final String VAT_DEF = "\t\tVAT: ";
+    private static final String CID_DEF = "    CID: ";
+    private static final String VAT_DEF = "    VAT: ";
 
     private СCoordinatedString cid = new СCoordinatedString(); // company id, use as Customer Number in InvoiceData
-    // private String siret;   // географичесуий номер компании во Франции 14 цифр
-    // private String toa; // ??
     private СCoordinatedString vat = new СCoordinatedString(); // vat id, номер НДС (фикс. налоговой) https://en.wikipedia.org/wiki/VAT_identification_number
 
     public СCoordinatedString GetCID() { return cid; }
@@ -31,15 +29,8 @@ public class CIdNumbers implements IModel {
     }
 
     @Override
-    public void Show() {
-        System.out.print( CID_DEF.concat( cid.Show() ) );
-        System.out.print( VAT_DEF.concat( vat.Show() ));
-    }
-
-    @Override
     public String GetData() {
-        return CID_DEF.concat( cid.Show() ).
-                concat( VAT_DEF ).concat( vat.Show() );
+        return cid.Show( CID_DEF ).concat( vat.Show( VAT_DEF ) );
     }
 
     @Override

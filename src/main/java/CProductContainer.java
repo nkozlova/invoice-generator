@@ -13,15 +13,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class CProductContainer implements IModel {
 
-    private static final String HEADERS_DEF = "\tHeaders: ";
-    private static final String TOTAL_SUM_DEF = "\tTotalSum: ";
-    private static final String TAX_RATE_DEF = "\tTaxRate: ";
-    private static final String TAX_DEF = "\tTax: ";
-    private static final String TOTAL_DEF = "\tTotal: ";
-    private static final String PRODUCT_DEF = "\tProduct ";
-    private static final String LEFT_BRACKET = " {\n";
-    private static final String RIGHT_BRACKET = "\t}\n";
-    private static final String NEXT_STR = "\n";
+    private static final String TOTAL_SUM_DEF = "  TotalSum: ";
+    private static final String TAX_RATE_DEF = "  TaxRate: ";
+    private static final String TAX_DEF = "  Tax: ";
+    private static final String TOTAL_DEF = "  Total: ";
+    private static final String PRODUCTS_DEF = "  Products:\n";
 
     private List<String> headers;
     private CCoordinatedPrice tax = new CCoordinatedPrice(); // Сумма налога
@@ -117,36 +113,17 @@ public class CProductContainer implements IModel {
     }
 
     @Override
-    public void Show() {
-        System.out.print( HEADERS_DEF.concat( headers.toString() ).concat( NEXT_STR ) );
-        System.out.print( TOTAL_SUM_DEF.concat( totalSum.Show() ) );
-        System.out.print( TAX_RATE_DEF.concat( taxRate.Show() ) );
-        System.out.print( TAX_DEF.concat( tax.Show() ) );
-        System.out.print( TOTAL_DEF.concat( total.Show() ) );
-
-        for( Integer i = 0; i < products.size(); i++ ) {
-            System.out.print( PRODUCT_DEF.concat( i.toString() ).concat( LEFT_BRACKET ) );
-            products.get( i ).Show();
-            System.out.print( RIGHT_BRACKET );
-        }
-    }
-
-    @Override
     public String GetData() {
-        String data = HEADERS_DEF.concat( headers.toString() ).
-                concat( TOTAL_SUM_DEF ).concat( totalSum.Show() ).
-                concat( TAX_RATE_DEF ).concat( taxRate.Show() ).
-                concat( TAX_DEF ).concat( tax.Show() ).
-                concat( TOTAL_DEF ).concat( total.Show() );
-
+        String data = totalSum.Show( TOTAL_SUM_DEF ).
+                concat( taxRate.Show( TAX_RATE_DEF ) ).
+                concat( tax.Show( TAX_DEF ) ).
+                concat( total.Show( TOTAL_DEF ) ).
+                concat( PRODUCTS_DEF );
         for( Integer i = 0; i < products.size(); i++ ) {
-            data = data.concat( PRODUCT_DEF ).concat( i.toString() ).concat( LEFT_BRACKET ).
-                    concat( products.get( i ).GetData() ).
-                    concat( RIGHT_BRACKET );
+            data = data.concat( products.get( i ).GetData() );
         }
         return data;
     }
-
 
     @Override
     public void DrawRects( Graphics2D g2d ) {

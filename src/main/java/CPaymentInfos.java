@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class CPaymentInfos implements IModel {
 
-    private static final String USED_PAYMENT_DEF = "\tUsedPayment: ";
+    private static final String USED_PAYMENT_DEF = "  UsedPayment: ";
 
     private CCoordinatedUsedPayment usedPayment = new CCoordinatedUsedPayment();
 
@@ -29,12 +29,7 @@ public class CPaymentInfos implements IModel {
     }
 
     @Override
-    public void Show() {
-        System.out.print( USED_PAYMENT_DEF.concat( usedPayment.Show() ) );
-    }
-
-    @Override
-    public String GetData() { return USED_PAYMENT_DEF.concat( usedPayment.Show() ); }
+    public String GetData() { return usedPayment.Show( USED_PAYMENT_DEF ); }
 
     @Override
     public void DrawRects( Graphics2D g2d ) {

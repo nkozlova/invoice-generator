@@ -10,10 +10,10 @@ import java.util.Random;
 public class CProduct implements IModel {
 
     private static final String DELIMITER_STR = ", ";
-    private static final String DESCRIPTION_DEF = "\t\tDescription: ";
-    private static final String PRICE_DEF = "\t\tPrice: ";
-    private static final String QUANTITY_DEF = "\t\tQuantity: ";
-    private static final String TOTAL_DEF = "\t\tTotal: ";
+    private static final String DESCRIPTION_DEF = "  - Description: ";
+    private static final String PRICE_DEF = "    Price: ";
+    private static final String QUANTITY_DEF = "    Quantity: ";
+    private static final String TOTAL_DEF = "    Total: ";
 
     private СCoordinatedString description = new СCoordinatedString();
     private CCoordinatedPrice price = new CCoordinatedPrice();   // price for unit
@@ -52,21 +52,12 @@ public class CProduct implements IModel {
     }
 
     @Override
-    public void Show() {
-        System.out.print( DESCRIPTION_DEF.concat( description.Show() ) );
-        System.out.print( PRICE_DEF.concat( price.Show() ) );
-        System.out.print( QUANTITY_DEF.concat( quantity.Show() ) );
-        System.out.print( TOTAL_DEF.concat( totalPrice.Show() ) );
-    }
-
-    @Override
     public String GetData() {
-        return DESCRIPTION_DEF.concat( description.Show() ).
-                concat( PRICE_DEF ).concat( price.Show() ).
-                concat( QUANTITY_DEF ).concat( quantity.Show() ).
-                concat( TOTAL_DEF ).concat( totalPrice.Show() );
+        return description.Show( DESCRIPTION_DEF ).
+                concat( price.Show( PRICE_DEF ) ).
+                concat( quantity.Show( QUANTITY_DEF ) ).
+                concat( totalPrice.Show( TOTAL_DEF ) );
     }
-
 
     @Override
     public void DrawRects( Graphics2D g2d ) {

@@ -6,9 +6,9 @@ import java.awt.*;
 
 public class CInvoiceNumbers implements IModel {
 
-    private static final String INVOICE_NUMBER_DEF = "\tInvoiceNumber: ";
-    private static final String COMMAND_NUMBER_DEF = "\tCommandNumber: ";
-    private static final String CLIENT_NUMBER_DEF = "\tClientNumber: ";
+    private static final String INVOICE_NUMBER_DEF = "  InvoiceNumber: ";
+    private static final String COMMAND_NUMBER_DEF = "  CommandNumber: ";
+    private static final String CLIENT_NUMBER_DEF = "  ClientNumber: ";
 
     private СCoordinatedString invoiceNumber = new СCoordinatedString();
     private СCoordinatedString commandNumber = new СCoordinatedString();   // Order number, номер заказа
@@ -28,17 +28,10 @@ public class CInvoiceNumbers implements IModel {
     }
 
     @Override
-    public void Show() {
-        System.out.print( INVOICE_NUMBER_DEF.concat( invoiceNumber.Show() ) );
-        System.out.print( COMMAND_NUMBER_DEF.concat( commandNumber.Show() ) );
-        System.out.print( CLIENT_NUMBER_DEF.concat( clientNumber.Show() ) );
-    }
-
-    @Override
     public String GetData() {
-        return INVOICE_NUMBER_DEF.concat( invoiceNumber.Show() ).
-                concat( COMMAND_NUMBER_DEF ).concat( commandNumber.Show() ).
-                concat( CLIENT_NUMBER_DEF ).concat( clientNumber.Show() );
+        return invoiceNumber.Show( INVOICE_NUMBER_DEF ).
+                concat( commandNumber.Show( COMMAND_NUMBER_DEF ) ).
+                concat( clientNumber.Show( CLIENT_NUMBER_DEF ) );
     }
 
     @Override

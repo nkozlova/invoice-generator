@@ -5,9 +5,9 @@ import java.awt.*;
 // Координаты расположения объекта на странице
 public class CRectangle {
 
-    private static final String LEFT_BRACKET = "[";
+    private static final String LEFT_BRACKET = "(";
     private static final String DELIMITER = ", ";
-    private static final String RIGHT_BRACKET = "]";
+    private static final String RIGHT_BRACKET = ")";
 
     private Integer left;
     private Integer top;
@@ -34,7 +34,7 @@ public class CRectangle {
     }
 
     public String ShowRect() {
-        // Вывод в формате [<l>, <t>, <r>, <b>]
+        // Вывод в формате (<l>, <t>, <r>, <b>)
         return LEFT_BRACKET.concat( left.toString() ).concat( DELIMITER ).concat( top.toString() ).concat( DELIMITER ).
                 concat( right.toString() ).concat( DELIMITER ).concat( bottom.toString() ).concat( RIGHT_BRACKET );
     }

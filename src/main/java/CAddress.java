@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class CAddress implements IModel {
 
-    private static final String LINES_DEF = "\t\tLines: ";
-    private static final String ZIP_DEF = "\t\tZip: ";
-    private static final String CITY_DEF = "\t\tCity: ";
-    private static final String STATE_DEF = "\t\tState: ";
-    private static final String COUNTRY_DEF = "\t\tCountry: ";
+    private static final String LINES_DEF = "    Lines: ";
+    private static final String ZIP_DEF = "    Zip: ";
+    private static final String CITY_DEF = "    City: ";
+    private static final String STATE_DEF = "    State: ";
+    private static final String COUNTRY_DEF = "    Country: ";
 
     private СCoordinatedString lines = new СCoordinatedString();   // улица, дом
     private СCoordinatedString zip = new СCoordinatedString(); // zip code, индекс
@@ -54,21 +54,12 @@ public class CAddress implements IModel {
     }
 
     @Override
-    public void Show() {
-        System.out.print( LINES_DEF.concat( lines.Show() ) );
-        System.out.print( ZIP_DEF.concat( zip.Show() ) );
-        System.out.print( CITY_DEF.concat( city.Show() ) );
-        System.out.print( STATE_DEF.concat( state.Show() ) );
-        System.out.print( COUNTRY_DEF.concat( country.Show() ) );
-    }
-
-    @Override
     public String GetData() {
-        return LINES_DEF.concat( lines.Show() ).
-                concat( ZIP_DEF ).concat( zip.Show() ).
-                concat( CITY_DEF ).concat( city.Show() ).
-                concat( STATE_DEF ).concat( state.Show() ).
-                concat( COUNTRY_DEF ).concat( country.Show() );
+        return lines.Show( LINES_DEF ).
+                concat( zip.Show( ZIP_DEF ) ).
+                concat( city.Show( CITY_DEF ) ).
+                concat( state.Show( STATE_DEF ) ).
+                concat( country.Show( COUNTRY_DEF ) );
     }
 
     @Override
