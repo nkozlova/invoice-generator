@@ -1,4 +1,3 @@
-import CoordinatedTypes.CRectangle;
 import CoordinatedTypes.СCoordinatedString;
 
 import com.mifmif.common.regex.Generex;
@@ -14,7 +13,7 @@ public class CInvoiceDates implements IModel {
     // TODO - посл-ть и проверка на корректность
     private СCoordinatedString invoiceDate = new СCoordinatedString();
     private СCoordinatedString commandDate = new СCoordinatedString(); // Order Date, дата заказа в таблице LineItems
-    private СCoordinatedString expeditionDate = new СCoordinatedString();  // Deliery Date, дата доставки
+    private СCoordinatedString expeditionDate = new СCoordinatedString();  // Delivery Date, дата доставки
     private СCoordinatedString paymentDate = new СCoordinatedString();  // Due Date, "Оплатить до..."
 
     public СCoordinatedString GetInvoiceDate() { return invoiceDate; }

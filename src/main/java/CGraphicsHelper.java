@@ -3,7 +3,6 @@ import CoordinatedTypes.CRectangle;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
-import java.util.concurrent.ThreadLocalRandom;
 
 // Класс, реализующий отрисовку элементов
 public class CGraphicsHelper {
@@ -17,9 +16,10 @@ public class CGraphicsHelper {
     public static final int ELEMENTS_SPACING = 5;
     public static final int BLOCKS_SPACING = 25;
 
-    public static boolean IsRandomTrue() {
-        // Необязательные элементы - выводим с 50% вероятностью
-        return ThreadLocalRandom.current().nextBoolean();
+    // Получилось ли сгенерировать число, не большее данной вероятности
+    public static boolean IsRandomTrue( double probability ) {
+        assert( probability >= 0. && probability <= 1. );
+        return Math.random() <= probability;
     }
 
     // рисуем строку, ее координаты нас не интересуют, возвращаем координаты занятого места

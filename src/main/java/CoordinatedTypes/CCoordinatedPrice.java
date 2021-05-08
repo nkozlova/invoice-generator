@@ -5,7 +5,8 @@ public class CCoordinatedPrice extends СCoordinatedBaseType {
 
     private static final String MASK = "%.2f";
 
-    private static TUsedCurrency currency; // Валюта, общая на весь докуент
+    private static TUsedCurrency currency; // Валюта, общая на весь документ
+    private static СCoordinatedString currencyName;
     private Double value;
 
     @Override

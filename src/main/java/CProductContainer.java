@@ -1,6 +1,5 @@
 import CoordinatedTypes.CCoordinatedProcent;
 import CoordinatedTypes.CCoordinatedPrice;
-import CoordinatedTypes.CRectangle;
 import CoordinatedTypes.TUsedCurrency;
 
 import java.awt.*;
@@ -27,7 +26,6 @@ public class CProductContainer implements IModel {
     private List<String> headers;
     private CCoordinatedPrice tax = new CCoordinatedPrice(); // Сумма налога
     private CCoordinatedProcent taxRate = new CCoordinatedProcent(); // Ставка налога, в процентах (0-15)
-    //private Double discount;  // скидка
     private CCoordinatedPrice totalSum = new CCoordinatedPrice();    // total без учета налога
     private CCoordinatedPrice total = new CCoordinatedPrice();
     private List<CProduct> products;

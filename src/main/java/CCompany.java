@@ -26,6 +26,7 @@ public class CCompany implements IModel {
     private static final String URL = ".com";
     private static final String DOMAIN = "@gmail.com";
 
+    private TCompanyRole role;
     private СCoordinatedString name = new СCoordinatedString();
     private СCoordinatedString phone = new СCoordinatedString();
     private СCoordinatedString email = new СCoordinatedString();
@@ -34,6 +35,10 @@ public class CCompany implements IModel {
     private CIdNumbers idNumbers = new CIdNumbers();
     private CBank bank = new CBank();
 
+    public CCompany( TCompanyRole r ) {
+        role = r;
+    }
+
     public СCoordinatedString GetName() { return name; }
     public СCoordinatedString GetPhone() { return phone; }
     public СCoordinatedString GetEmail() { return email; }
@@ -41,6 +46,24 @@ public class CCompany implements IModel {
     public CAddress GetAddress() { return address; }
     public CIdNumbers GetIdNumbers() { return idNumbers; }
     public CBank GetBank() { return bank; }
+    public String GetRole() {
+        switch( role ) {
+            case CR_BU:
+                return "Bisness Unit";
+            case CR_Vendor:
+                return "Vendor";
+            case CR_ShipTo:
+                return "Ship To";
+            case CR_BillTo:
+                return "Bill To";
+            case CR_Shipper:
+                return "Shipper";
+            case CR_RemitTo:
+                return "Remit To";
+        }
+        assert( false );
+        return "";
+    }
 
     @Override
     public void Generate() {

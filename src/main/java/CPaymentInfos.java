@@ -1,5 +1,4 @@
 import CoordinatedTypes.CCoordinatedUsedPayment;
-import CoordinatedTypes.CRectangle;
 import CoordinatedTypes.TUsedPayment;
 
 import java.awt.*;
