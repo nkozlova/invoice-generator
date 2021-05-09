@@ -15,6 +15,12 @@ public class CGraphicsHelper {
     public static final int RIGHT_PADDING = 60;
     public static final int ELEMENTS_SPACING = 5;
     public static final int BLOCKS_SPACING = 25;
+    public static final int BLOCK_WIDTH = 250;
+    private static final Boolean USE_ARIAL = IsRandomTrue( 0.5 ); // Arial или TNR
+    public static final String FONT_NAME = USE_ARIAL ? "Arial" : "Times New Roman";
+    public static final Font DEFAULT_FONT = new Font( FONT_NAME, 0, USE_ARIAL ? 13 : 14 );
+    public static final Font BOLD_DEFAULT_FONT = new Font( FONT_NAME, Font.BOLD, USE_ARIAL ? 13 : 14 );
+    public static final Font INVOICE_CAPTION_FONT = new Font( CGraphicsHelper.FONT_NAME, Font.BOLD, 20 );
 
     // Получилось ли сгенерировать число, не большее данной вероятности
     public static boolean IsRandomTrue( double probability ) {
@@ -64,7 +70,7 @@ public class CGraphicsHelper {
                 rectangle1.GetHeight() );
     }
 
-    // Возвращается нижнюю координату текста, помещенного в рамки left/top
+    // Отрисовка многострочного (возможно) текста, помещенного в рамки left/right
     public static CRectangle DrawMultilineText( Graphics2D g2d, СCoordinatedBaseType str, int left, int right, int top ) {
         int y = top;
         FontMetrics fm = g2d.getFontMetrics();

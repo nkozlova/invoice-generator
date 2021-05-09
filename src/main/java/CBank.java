@@ -9,8 +9,8 @@ public class CBank implements IModel {
     private static final String NAME_DEF = "    Name: ";
     private static final String IBAN_DEF = "    Iban: ";
     private static final String SWIFT_DEF = "    Swift: ";
-    private static final String SORT_CODE_DEF = "    SortCode: ";
-    private static final String BANK_ACCOUNT_DEF = "    BankAccount: ";
+    private static final String SORT_CODE_DEF = "    Sort Code: ";
+    private static final String BANK_ACCOUNT_DEF = "    Bank Account: ";
     private static final String INT_PATTERN = "\\d+";
     private static final String STR_PATTERN = "[A-Z]+";
 
@@ -58,5 +58,35 @@ public class CBank implements IModel {
         swift.DrawRects( g2d );
         sortCode.DrawRects( g2d );
         bankAccount.DrawRects( g2d );
+    }
+
+    // Отрисовка банковской информации
+    public CRectangle DrawInfo(Graphics2D g2d, int x, int y ) {
+        int left = x;
+        int width = 0;
+        int top = y;
+
+        CRectangle rect = CGraphicsHelper.DrawString( g2d, "Bank: ", GetName(), x, y );
+        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+        width = Math.max( width, rect.GetWidth() );
+
+        rect = CGraphicsHelper.DrawString( g2d, "Account No: ", GetBankAccount(), x, y );
+        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+        width = Math.max( width, rect.GetWidth() );
+
+        rect = CGraphicsHelper.DrawString( g2d, "Sort Code: ", GetSortCode(), x, y );
+        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+        width = Math.max( width, rect.GetWidth() );
+
+        rect = CGraphicsHelper.DrawString( g2d, "SWIFT: ", GetSwift(), x, y );
+        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+        width = Math.max( width, rect.GetWidth() );
+
+        rect = CGraphicsHelper.DrawString( g2d, "IBAN No: ", GetIban(), x, y );
+        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+        width = Math.max( width, rect.GetWidth() );
+
+        FontMetrics fm = g2d.getFontMetrics();
+        return new CRectangle( left, y + fm.getDescent(), width, y - top );
     }
 }

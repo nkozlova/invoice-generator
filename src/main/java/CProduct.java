@@ -1,4 +1,3 @@
-import CoordinatedTypes.CRectangle;
 import CoordinatedTypes.СCoordinatedString;
 import CoordinatedTypes.CCoordinatedInteger;
 import CoordinatedTypes.CCoordinatedPrice;

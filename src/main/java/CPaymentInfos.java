@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class CPaymentInfos implements IModel {
 
-    private static final String USED_PAYMENT_DEF = "  UsedPayment: ";
+    private static final String USED_PAYMENT_DEF = "  Used Payment: ";
 
     private CCoordinatedUsedPayment usedPayment = new CCoordinatedUsedPayment();
 
@@ -17,13 +17,13 @@ public class CPaymentInfos implements IModel {
         Random random = new Random();
         switch( random.nextInt( TUsedPayment.values().length ) ) {
             case 0:
-                usedPayment.Set( TUsedPayment.Ewallet );
+                usedPayment.Set( TUsedPayment.UP_Ewallet );
                 break;
             case 1:
-                usedPayment.Set( TUsedPayment.Cash );
+                usedPayment.Set( TUsedPayment.UP_Cash );
                 break;
             default:
-                usedPayment.Set( TUsedPayment.Credit_cart );
+                usedPayment.Set( TUsedPayment.UP_CreditCart );
                 break;
         }
     }

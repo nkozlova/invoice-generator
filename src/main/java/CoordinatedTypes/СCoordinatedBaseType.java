@@ -32,14 +32,14 @@ public abstract class СCoordinatedBaseType {
         return key.concat( VALUE_KEY ).concat( GetValue() ).concat( COORDINATE_KEY ).concat( showRects() ).concat( END_LINE );
     }
 
-    // Отобразить прямоугольник координат значения
+    // Отображение прямоугольников координат
     public void DrawRects( Graphics2D g2d ) {
         for( int i = 0; i < coordinates.size(); i++ ){
             coordinates.get( i ).DrawRect( g2d );
         }
     }
 
-    // Вывести координаты
+    // Вывод координат
     private String showRects() {
         String str = EMPTY_STR;
         for( int i = 0; i < coordinates.size(); i++ ){

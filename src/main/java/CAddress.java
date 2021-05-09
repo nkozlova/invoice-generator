@@ -1,4 +1,3 @@
-import CoordinatedTypes.CRectangle;
 import CoordinatedTypes.СCoordinatedString;
 
 import com.mifmif.common.regex.Generex;
@@ -19,17 +18,15 @@ public class CAddress implements IModel {
     private СCoordinatedString state = new СCoordinatedString();
     private СCoordinatedString country = new СCoordinatedString();
 
-    public void SetCity( String c ) { city.Set( c ); }
-    public void SetState( String s ) { state.Set( s ); }
-    public void SetCountry( String c ) {
-        country.Set( c );
-    }
-
     public СCoordinatedString GetLines() { return lines; }
     public СCoordinatedString GetZip() { return zip; }
     public СCoordinatedString GetCity() { return city; }
     public СCoordinatedString GetState() { return state; }
     public СCoordinatedString GetCountry() { return country; }
+
+    public void SetCity( String c ) { city.Set( c ); }
+    public void SetState( String s ) { state.Set( s ); }
+    public void SetCountry( String c ) { country.Set( c ); }
 
     @Override
     public void Generate() {

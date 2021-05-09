@@ -1,8 +1,6 @@
 package CoordinatedTypes;
 
 public enum TUsedCurrency {
-
-    $, // доллар
-    €   // евро
-
+    UC_Dollar, // доллар
+    UC_Euro   // евро
 }

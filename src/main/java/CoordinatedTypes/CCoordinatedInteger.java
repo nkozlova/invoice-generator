@@ -6,12 +6,8 @@ public class CCoordinatedInteger extends СCoordinatedBaseType {
     private Integer value;
 
     @Override
-    public String GetValue() {
-        return value.toString();
-    }
+    public String GetValue() { return value.toString(); }
 
     public Integer Get() { return value; }
-    public void Set( Integer v ) {
-        value = v;
-    }
+    public void Set( Integer v ) { value = v; }
 }

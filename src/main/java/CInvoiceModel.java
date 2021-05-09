@@ -17,19 +17,13 @@ public class CInvoiceModel implements IModel {
     private static final String PAYMENTS_INFO_DEF = "PaymentsInfo:\n";
     private static final String COMPANIES_DEF = "Companies:\n";
     private static final String PRODUCT_CONTAINER_DEF = "ProductContainer:\n";
-    private static final Boolean USE_ARIAL = CGraphicsHelper.IsRandomTrue( 0.5 ); // Arial или TNR
-    private static final String FONT_NAME = USE_ARIAL ? "Arial" : "Times New Roman";
-    private static final Font DEFAULT_FONT = new Font( FONT_NAME, 0, USE_ARIAL ? 13 : 14 );
-    private static final Font BOLD_DEFAULT_FONT = new Font( FONT_NAME, Font.BOLD, USE_ARIAL ? 13 : 14 );
-    private static final Boolean USE_ADDRESS_COUNTRY = CGraphicsHelper.IsRandomTrue( 0.21657754010695 ); // Показывать ли в адресе страну
-    private static final Boolean USE_ADDRESS_STATE = USE_ADDRESS_COUNTRY || CGraphicsHelper.IsRandomTrue( 0.9429590017825 ); // Показывать ли в адресе штат
     private static final Boolean USE_BU = CGraphicsHelper.IsRandomTrue( 0.4661319073083779 ); // Будет ли информация о bu
     private static final Boolean USE_SHIP_TO = CGraphicsHelper.IsRandomTrue( 0.6283422459893048 ); // Будет ли информация о ship-to
     private static final Boolean USE_BILL_TO = CGraphicsHelper.IsRandomTrue( 0.535650623885918 ); // Будет ли информация о bill-to
     private static final Boolean USE_SHIPPER = CGraphicsHelper.IsRandomTrue( 0.19073083778966132 ); // Будет ли информация о shipper
     private static final Boolean USE_REMIT_TO = CGraphicsHelper.IsRandomTrue( 0.375222816399287 ); // Будет ли информация о remit-to
+    private static final int VALUE_SHIFT = 5;
 
-    //private static int languageId;
     private CInvoiceDates invoiceDates = new CInvoiceDates();
     private CInvoiceNumbers invoiceNumbers = new CInvoiceNumbers();
     private CPaymentInfos paymentInfos = new CPaymentInfos();
@@ -39,7 +33,7 @@ public class CInvoiceModel implements IModel {
     private CCompany billTo = new CCompany( TCompanyRole.CR_BillTo );  // bill to, плательщик
     private CCompany shipper = new CCompany( TCompanyRole.CR_Shipper );  // shipper, грузоотправитель
     private CCompany remitTo = new CCompany( TCompanyRole.CR_RemitTo );  // remit to, получатель платежа
-    private CProductContainer productContainer = new CProductContainer();   // LineItems, Amounts
+    private CProductContainer productContainer = new CProductContainer();   // блоки LineItems, Amounts
 
     @Override
     public void Generate() {
@@ -168,24 +162,23 @@ public class CInvoiceModel implements IModel {
         g2d.setBackground( Color.WHITE );
         g2d.clearRect( 0, 0, CGraphicsHelper.A4_WIDTH, CGraphicsHelper.A4_HEIGHT );
 
-        int rightBorder = CGraphicsHelper.A4_WIDTH - CGraphicsHelper.RIGHT_PADDING;
-        int rightElementsStart = rightBorder - 240;
+        int rightElementsStart = CGraphicsHelper.A4_WIDTH - CGraphicsHelper.RIGHT_PADDING - CGraphicsHelper.BLOCK_WIDTH;
 
         Boolean isVendorOnLeft = CGraphicsHelper.IsRandomTrue( 0.8459687123946589 ); // Покажем ли информацию о vendor и логотип слева/справа
         int x = !isVendorOnLeft ? rightElementsStart : CGraphicsHelper.LEFT_PADDING;
         int y = CGraphicsHelper.TOP_PADDING;
         CRectangle logoCoord = drawVendorLogo( g2d, x, y );
         y = logoCoord.GetBottom() + CGraphicsHelper.BLOCKS_SPACING;
-        CRectangle vendorCoord = drawCompanyInfo( g2d, x, 240, y, vendor );
+        CRectangle vendorCoord = vendor.DrawInfo( g2d, x, CGraphicsHelper.BLOCK_WIDTH, y );
 
-        g2d.setFont( new Font( FONT_NAME, Font.BOLD, 20 ) );
+        g2d.setFont( CGraphicsHelper.INVOICE_CAPTION_FONT );
         g2d.setPaint( Color.BLACK );
-        Boolean isCaptionOnCenter = CGraphicsHelper.IsRandomTrue( 0.5 ); // Покажем ли 'INVOICE' по центру или над информацией об инвойсе
+        Boolean isCaptionOnCenter = CGraphicsHelper.IsRandomTrue( 0.7 ); // Покажем ли 'INVOICE' по центру или над информацией об инвойсе
         y = CGraphicsHelper.TOP_PADDING + g2d.getFont().getSize();
         x = isCaptionOnCenter ? 350 : isVendorOnLeft ? rightElementsStart : CGraphicsHelper.LEFT_PADDING;
         CRectangle captionCoord = CGraphicsHelper.DrawString( g2d, "INVOICE", x, y );
 
-        g2d.setFont( DEFAULT_FONT );
+        g2d.setFont( CGraphicsHelper.DEFAULT_FONT );
 
         if( isCaptionOnCenter ) {
             x = isVendorOnLeft ? rightElementsStart : CGraphicsHelper.LEFT_PADDING;
@@ -194,28 +187,29 @@ public class CInvoiceModel implements IModel {
         }
         CRectangle invoiceInfoCoord = drawInvoiceInfo( g2d, x, y );
 
-        y = Math.max( invoiceInfoCoord.GetBottom(), vendorCoord.GetBottom() ) +
-                CGraphicsHelper.BLOCKS_SPACING;
+        y = Math.max( invoiceInfoCoord.GetBottom(), vendorCoord.GetBottom() ) + CGraphicsHelper.BLOCKS_SPACING * 2;
         CRectangle companiesCoord = drawCompaniesInfo( g2d, y );
 
         x = CGraphicsHelper.LEFT_PADDING;
-        y = companiesCoord.GetBottom() + CGraphicsHelper.BLOCKS_SPACING * 2;
-        CRectangle tableCoord = drawTableInfo( g2d, x, y );
+        y = companiesCoord.GetBottom() + CGraphicsHelper.BLOCKS_SPACING * 3;
+        CRectangle tableCoord = productContainer.DrawTableInfo( g2d, y );
 
-        Boolean isLeftBankInfo = CGraphicsHelper.IsRandomTrue( 0.5 ); // Покажем банковскую инфомацию слева/справа
-        x = isLeftBankInfo ? CGraphicsHelper.LEFT_PADDING : rightElementsStart;
-        y = tableCoord.GetBottom() + CGraphicsHelper.BLOCKS_SPACING * 3;
-        drawBankInfo( g2d, x, y );
+        if( CGraphicsHelper.IsRandomTrue( 0.4 ) ) {
+            Boolean isBankInfoOnLeft = CGraphicsHelper.IsRandomTrue( 0.6 ); // Покажем банковскую инфомацию слева/справа
+            x = isBankInfoOnLeft ? CGraphicsHelper.LEFT_PADDING : rightElementsStart;
+            y = tableCoord.GetBottom() + CGraphicsHelper.BLOCKS_SPACING * 3;
+            vendor.GetBank().DrawInfo( g2d, x, y );
+        }
     }
 
     // Блок с логотипом компании
     private CRectangle drawVendorLogo( Graphics2D g2d, int x, int y ) {
-        int l = x;
-        int w = 0;
-        int t = y;
+        int left = x;
+        int width = 0;
+        int top = y;
 
         // Логотип
-        g2d.setFont( new Font( FONT_NAME, Font.BOLD | Font.ITALIC, 30 ) );
+        g2d.setFont( new Font( CGraphicsHelper.FONT_NAME, Font.BOLD | Font.ITALIC, 30 ) );
         String logoName = vendor.GetName().GetValue();
         if( logoName.contains( " " ) && logoName.length() > 7 ) {
             // До 7 символов в названии -- оставляем их
@@ -229,7 +223,7 @@ public class CInvoiceModel implements IModel {
 
             Image image = ImageIO.read( logos[i] );
             g2d.drawImage( image, x, y, ( (BufferedImage) image ).getWidth(), ( ( BufferedImage ) image ).getHeight(), null );
-            w = ( (BufferedImage) image ).getWidth();
+            width = ( (BufferedImage) image ).getWidth();
 
             switch( i ) {
                 case 0: {
@@ -240,7 +234,7 @@ public class CInvoiceModel implements IModel {
                 }
                 case 1: {
                     g2d.setPaint( new Color( 1, 82, 145 ) );
-                    CGraphicsHelper.DrawString( g2d, logoName, x + w + CGraphicsHelper.ELEMENTS_SPACING,
+                    CGraphicsHelper.DrawString( g2d, logoName, x + width + CGraphicsHelper.ELEMENTS_SPACING,
                             y + ((BufferedImage) image).getHeight() / 2 + CGraphicsHelper.ELEMENTS_SPACING * 2 );
                     break;
                 }
@@ -251,14 +245,14 @@ public class CInvoiceModel implements IModel {
                 case 6:
                 {
                     g2d.setPaint( new Color( 251, 0, 131 ) );
-                    CGraphicsHelper.DrawString( g2d, logoName, x + w + CGraphicsHelper.ELEMENTS_SPACING,
+                    CGraphicsHelper.DrawString( g2d, logoName, x + width + CGraphicsHelper.ELEMENTS_SPACING,
                             y + ((BufferedImage) image).getHeight() / 2 + CGraphicsHelper.ELEMENTS_SPACING * 2 );
                     break;
                 }
                 default:
                 {
                     g2d.setPaint( Color.BLACK );
-                    CGraphicsHelper.DrawString( g2d, logoName, x + w + CGraphicsHelper.ELEMENTS_SPACING,
+                    CGraphicsHelper.DrawString( g2d, logoName, x + width + CGraphicsHelper.ELEMENTS_SPACING,
                             y + ((BufferedImage) image).getHeight() / 2 + CGraphicsHelper.ELEMENTS_SPACING * 2 );
                 }
             }
@@ -268,110 +262,69 @@ public class CInvoiceModel implements IModel {
         }
 
         g2d.setPaint( Color.BLACK );
-        g2d.setFont( DEFAULT_FONT );
+        g2d.setFont( CGraphicsHelper.DEFAULT_FONT );
 
-        return new CRectangle( l, y, w, y - t );
-    }
-
-    // Блок информации о компании
-    private CRectangle drawCompanyInfo( Graphics2D g2d, int x, int maxWidth, int y, CCompany company ) {
-        int l = x;
-        int w = 0;
-        int t = y;
-
-        // Обязательные элементы
-        CRectangle rect = CGraphicsHelper.DrawMultilineText( g2d, company.GetName(), x, x + maxWidth, y );
-        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-        w = Math.max( w, rect.GetWidth() );
-
-        rect = CGraphicsHelper.DrawMultilineText( g2d, company.GetAddress().GetLines(), x, x + maxWidth, y );
-        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-        w = Math.max( w, rect.GetWidth() );
-
-        rect = CGraphicsHelper.DrawStrings( g2d, company.GetAddress().GetZip(), company.GetAddress().GetCity(), x, y );
-        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-        w = Math.max( w, rect.GetWidth() );
-
-        // Необязательные элементы
-        if( USE_ADDRESS_STATE ) {
-            rect = USE_ADDRESS_COUNTRY ? CGraphicsHelper.DrawStrings( g2d, company.GetAddress().GetState(),
-                    company.GetAddress().GetCountry(), x, y )
-                    : CGraphicsHelper.DrawString( g2d, company.GetAddress().GetState(), x, y );
-            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
-        }
-        if( CGraphicsHelper.IsRandomTrue( 0.5 ) ) {
-            rect = CGraphicsHelper.DrawString( g2d, "Phone: ", company.GetPhone(), x, y );
-            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
-        }
-        if( CGraphicsHelper.IsRandomTrue( 0.5 ) ) {
-            rect = CGraphicsHelper.DrawString( g2d, "Website: ", company.GetWebSite(), x, y );
-            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
-        }
-        if( CGraphicsHelper.IsRandomTrue( 0.5 ) ) {
-            rect = CGraphicsHelper.DrawString( g2d, "Email: ", company.GetEmail(), x, y );
-            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
-        }
-
-        FontMetrics fm = g2d.getFontMetrics();
-        return new CRectangle( l, y + fm.getDescent() - CGraphicsHelper.DefaultYShift( g2d ), w, y - t );
+        return new CRectangle( left, y, width, y - top );
     }
 
     // Блок информации об инвойсе
     private CRectangle drawInvoiceInfo( Graphics2D g2d, int x, int y ) {
-        int l = x;
-        int w = 0;
-        int t = y;
+        int left = x;
+        int width = 0;
+        int top = y;
 
         CRectangle rect;
         if( CGraphicsHelper.IsRandomTrue( 0.8672014260249554 ) ) {
             rect = CGraphicsHelper.DrawString( g2d, "Invoice Number: ", invoiceNumbers.GetInvoiceNumber(), x, y );
             y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
+            width = Math.max( width, rect.GetWidth() );
         }
         if( CGraphicsHelper.IsRandomTrue( 0.9010695187165776 ) ) {
             rect = CGraphicsHelper.DrawString( g2d, "Invoice Date: ", invoiceDates.GetInvoiceDate(), x, y );
             y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
+            width = Math.max( width, rect.GetWidth() );
         }
         if( CGraphicsHelper.IsRandomTrue( 0.5 ) ) {
+            rect = CGraphicsHelper.DrawString( g2d, "PO Number: ", invoiceNumbers.GetPurchaseOrderNumber(), x, y );
+            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+            width = Math.max( width, rect.GetWidth() );
+        }
+        if( CGraphicsHelper.IsRandomTrue( 0.3 ) ) {
             rect = CGraphicsHelper.DrawString( g2d, "Client Number: ", invoiceNumbers.GetClientNumber(), x, y );
             y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
+            width = Math.max( width, rect.GetWidth() );
         }
         if( CGraphicsHelper.IsRandomTrue( 0.3342245989304813 ) ) {
             rect = CGraphicsHelper.DrawString( g2d, "Due Date: ", invoiceDates.GetPaymentDate(), x, y );
             y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
+            width = Math.max( width, rect.GetWidth() );
         }
         if( CGraphicsHelper.IsRandomTrue( 0.33511586452762926 ) ) {
             rect = CGraphicsHelper.DrawString( g2d, "Delivery Date: ", invoiceDates.GetExpeditionDate(), x, y );
             y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
+            width = Math.max( width, rect.GetWidth() );
         }
-        if( CGraphicsHelper.IsRandomTrue( 0.5 ) ) {
+        if( CGraphicsHelper.IsRandomTrue( 0.3 ) ) {
             rect = CGraphicsHelper.DrawString( g2d, "Used payment: ", paymentInfos.GetUsedPyment(), x, y );
             y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
+            width = Math.max( width, rect.GetWidth() );
         }
         if( CGraphicsHelper.IsRandomTrue( 0.25363692896900713 ) ) {
             rect = CGraphicsHelper.DrawString( g2d, "Total: ", productContainer.GetTotal(), x, y );
             y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            w = Math.max( w, rect.GetWidth() );
+            width = Math.max( width, rect.GetWidth() );
         }
 
         FontMetrics fm = g2d.getFontMetrics();
-        return new CRectangle( l, y + fm.getDescent(), w, y - t );
+        return new CRectangle( left, y + fm.getDescent(), width, y - top );
     }
 
     // Блок с информацией о других компаниях
     private CRectangle drawCompaniesInfo( Graphics2D g2d, int y ) {
-        int l = CGraphicsHelper.LEFT_PADDING;
-        int r = CGraphicsHelper.LEFT_PADDING + 700;
-        int t = y;
+        int left = CGraphicsHelper.LEFT_PADDING;
+        int right = CGraphicsHelper.A4_WIDTH - CGraphicsHelper.RIGHT_PADDING;
+        int width = right - left;
+        int top = y;
 
         Boolean withHorizontalSeparator = CGraphicsHelper.IsRandomTrue( 0.5 ); // Рисовать ли горизонтальный разделитель заголовка
         Boolean withVerticalSeparators = CGraphicsHelper.IsRandomTrue( 0.5 ); // Рисовать ли вертикальные разделители между столбцами
@@ -395,20 +348,20 @@ public class CInvoiceModel implements IModel {
             companies.add( remitTo );
         }
         if( companies.size() == 0 ) {
-            return new CRectangle( l, t, 0, 0 );
+            return new CRectangle( left, top, 0, 0 );
         }
-        g2d.setFont( BOLD_DEFAULT_FONT );
-        int columnWidth = 700 / companies.size(); // Ширина одного столбца
+        g2d.setFont( CGraphicsHelper.BOLD_DEFAULT_FONT );
+        int columnWidth = width / companies.size(); // Ширина одного столбца
         int yStart = y - CGraphicsHelper.DefaultYShift( g2d );
         for( int i = 0; i < companies.size(); i++ ) {
-            g2d.drawString( companies.get( i ).GetRole(), l + 5 + i * columnWidth, y );
+            g2d.drawString( companies.get( i ).GetRole(), left + i * columnWidth + VALUE_SHIFT, y );
         }
 
         // Отчеркивание заголовка
         y += CGraphicsHelper.ELEMENTS_SPACING;
         if( withHorizontalSeparator ) {
             g2d.setColor( Color.GRAY );
-            g2d.drawLine( l, y, r, y );
+            g2d.drawLine( left, y, right, y );
             g2d.setColor( Color.BLACK );
         }
 
@@ -416,9 +369,10 @@ public class CInvoiceModel implements IModel {
         int b = y;
 
         // Данные о компаниях
-        g2d.setFont( DEFAULT_FONT );
+        g2d.setFont( CGraphicsHelper.DEFAULT_FONT );
         for( int i = 0; i < companies.size(); i++ ) {
-            CRectangle rect = drawCompanyInfo( g2d, l + 5 + i * columnWidth, columnWidth - 10, y, companies.get( i ) );
+            CRectangle rect = companies.get( i ).DrawInfo( g2d, left + i * columnWidth + VALUE_SHIFT,
+                    columnWidth - VALUE_SHIFT * 2, y );
             b = Math.max( b, rect.GetBottom() );
         }
 
@@ -426,7 +380,7 @@ public class CInvoiceModel implements IModel {
         if( withVerticalSeparators ) {
             g2d.setColor( Color.GRAY );
             for( int i = 1; i < companies.size(); i++ ) {
-                int xCoord = l + i * columnWidth;
+                int xCoord = left + i * columnWidth;
                 g2d.drawLine( xCoord, yStart, xCoord, b );
             }
         }
@@ -434,181 +388,13 @@ public class CInvoiceModel implements IModel {
         // Границы таблицы
         if( withBorder ) {
             g2d.setColor( Color.GRAY );
-            g2d.drawLine( l, yStart, r, yStart );
-            g2d.drawLine( l, yStart, l, b );
-            g2d.drawLine( r, yStart, r, b );
-            g2d.drawLine( l, b, r, b );
+            g2d.drawLine( left, yStart, right, yStart );
+            g2d.drawLine( left, yStart, left, b );
+            g2d.drawLine( right, yStart, right, b );
+            g2d.drawLine( left, b, right, b );
         }
 
         FontMetrics fm = g2d.getFontMetrics();
-        return new CRectangle( l, b, r - l, b - t );
-    }
-
-    // Блок банковской информации
-    private CRectangle drawBankInfo( Graphics2D g2d, int x, int y ) {
-        int l = x;
-        int w = 0;
-        int t = y;
-
-        CRectangle rect = CGraphicsHelper.DrawString( g2d, "Bank: ", vendor.GetBank().GetName(), x, y );
-        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-        w = Math.max( w, rect.GetWidth() );
-
-        rect = CGraphicsHelper.DrawString( g2d, "Account No: ", vendor.GetBank().GetBankAccount(), x, y );
-        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-        w = Math.max( w, rect.GetWidth() );
-
-        rect = CGraphicsHelper.DrawString( g2d, "Sort Code: ", vendor.GetBank().GetSortCode(), x, y );
-        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-        w = Math.max( w, rect.GetWidth() );
-
-        rect = CGraphicsHelper.DrawString( g2d, "SWIFT: ", vendor.GetBank().GetSwift(), x, y );
-        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-        w = Math.max( w, rect.GetWidth() );
-
-        rect = CGraphicsHelper.DrawString( g2d, "IBAN No: ", vendor.GetBank().GetIban(), x, y );
-        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-        w = Math.max( w, rect.GetWidth() );
-
-        FontMetrics fm = g2d.getFontMetrics();
-        return new CRectangle( l, y + fm.getDescent(), w, y - t );
-    }
-
-    // Блок с таблицей
-    private CRectangle drawTableInfo( Graphics2D g2d, int x, int y ) {
-        int l = x;
-        int w = 0;
-        int t = y;
-
-        Boolean withEnumeration = CGraphicsHelper.IsRandomTrue( 0.5 ); // Показывать ли с нумерацией продуктов
-        Boolean withHorizontalSeparators = CGraphicsHelper.IsRandomTrue( 0.5 ); // Рисовать ли горизонтальные разделители между элементами
-        Boolean withVerticalSeparators = CGraphicsHelper.IsRandomTrue( 0.5 ); // Рисовать ли вертикальные разделители между столбцами
-        Boolean withBorder = CGraphicsHelper.IsRandomTrue( 0.5 ); // Границы таблицы
-
-        // Заголовок
-        g2d.setFont( BOLD_DEFAULT_FONT );
-        int startedIndex = withEnumeration ? 1 : 0;
-        int xStart = CGraphicsHelper.LEFT_PADDING;
-        int xEnd = CGraphicsHelper.LEFT_PADDING + 700;
-        int[] x_starts;
-        if( withEnumeration ) {
-            x_starts = new int[] { xStart + 5, xStart + 25, xStart + 435, xStart + 525, xStart + 615 };
-        } else {
-            x_starts = new int[] { xStart + 5, xStart + 405, xStart + 505, xStart + 605 };
-        }
-        int yStart = y - CGraphicsHelper.DefaultYShift( g2d );
-        for( int i = 0; i < productContainer.GetHeaders().size(); i++ ) {
-            g2d.drawString( productContainer.GetHeaders().get( i ), x_starts[i + startedIndex], y );
-        }
-
-        // Отчеркивание заголовка
-        g2d.setColor( Color.GRAY );
-        y += CGraphicsHelper.ELEMENTS_SPACING;
-        g2d.drawLine( xStart, y, xEnd, y );
-        g2d.setColor( Color.BLACK );
-
-        // Данные продуктов
-        g2d.setFont( DEFAULT_FONT );
-        for( int i = 0; i < productContainer.GetProducts().size(); i++ ) {
-            CProduct product = productContainer.GetProducts().get( i );
-            y += CGraphicsHelper.DefaultYShift( g2d );
-            if( withEnumeration ) {
-                Integer enumerate = i + 1;
-                CGraphicsHelper.DrawString( g2d, enumerate.toString(), x_starts[0], y );
-            }
-            CGraphicsHelper.DrawString( g2d, product.GetPrice(), x_starts[startedIndex + 1], y );
-            CGraphicsHelper.DrawString( g2d, product.GetQuantity(), x_starts[startedIndex + 2], y );
-            CGraphicsHelper.DrawString( g2d, product.GetTotalPrice(), x_starts[startedIndex + 3], y );
-
-            y = CGraphicsHelper.DrawMultilineText( g2d, product.GetDescription(), x_starts[startedIndex], x_starts[startedIndex + 1] - 10, y ).GetBottom() +
-                    CGraphicsHelper.ELEMENTS_SPACING;
-
-            // Горизонтальное отделение
-            if( withHorizontalSeparators || i == productContainer.GetProducts().size() - 1 ) {
-                g2d.setColor( Color.GRAY );
-                g2d.drawLine( xStart, y, xEnd, y );
-                g2d.setColor( Color.BLACK );
-            }
-        }
-
-        int xTotalStart = x_starts[x_starts.length - 2] - 5;
-        int yEnd = y + 4 * ( CGraphicsHelper.DefaultYShift( g2d ) + CGraphicsHelper.ELEMENTS_SPACING );
-
-        // Вертикальное отделение
-        if( withVerticalSeparators ) {
-            g2d.setColor( Color.GRAY );
-            for( int i = 0; i < x_starts.length; i++ ) {
-                int yCurrentEnd = i < x_starts.length - 1 ? y : yEnd;
-                if( i != 0 ) {
-                    g2d.drawLine( x_starts[i] - 5, yStart, x_starts[i] - 5, yCurrentEnd );
-                }
-            }
-        }
-
-        // Границы таблицы
-        if( withBorder ) {
-            g2d.setColor( Color.GRAY );
-            g2d.drawLine( xStart, yStart, xEnd, yStart );
-            g2d.drawLine( xStart, yStart, xStart, y );
-            g2d.drawLine( xEnd, yStart, xEnd, yEnd );
-            g2d.drawLine( xTotalStart, y, xTotalStart, yEnd );
-            g2d.drawLine( xTotalStart, yEnd, xEnd, yEnd );
-        }
-        if( !withBorder && !( withHorizontalSeparators && withVerticalSeparators ) ) {
-            // Обведем строку total
-            g2d.setColor( Color.GRAY );
-            int yCurrentStart = yEnd - CGraphicsHelper.DefaultYShift( g2d ) - CGraphicsHelper.ELEMENTS_SPACING;
-            g2d.drawLine( xTotalStart, yCurrentStart, xEnd, yCurrentStart );
-            g2d.drawLine( xTotalStart, yCurrentStart, xTotalStart, yEnd );
-            g2d.drawLine( xTotalStart, yEnd, xEnd, yEnd );
-            g2d.drawLine( xEnd, yCurrentStart, xEnd, yEnd );
-        }
-
-        // Итоги таблицы
-        g2d.setColor( Color.BLACK );
-        y += CGraphicsHelper.DefaultYShift( g2d );
-        CGraphicsHelper.DrawString( g2d, "Sub Total: ", x_starts[startedIndex + 2], y );
-        CGraphicsHelper.DrawString( g2d, productContainer.GetTotalSum(), x_starts[startedIndex + 3], y );
-        y += CGraphicsHelper.ELEMENTS_SPACING;
-        if( withHorizontalSeparators ) {
-            g2d.setColor( Color.GRAY );
-            g2d.drawLine( xTotalStart, y, xEnd, y );
-            g2d.setColor( Color.BLACK );
-        }
-
-        y += CGraphicsHelper.DefaultYShift( g2d );
-        CGraphicsHelper.DrawString( g2d, "Tax rate: ", x_starts[startedIndex + 2], y );
-        CGraphicsHelper.DrawString( g2d, productContainer.GetTaxRate(), x_starts[startedIndex + 3], y );
-        y += CGraphicsHelper.ELEMENTS_SPACING;
-        if( withHorizontalSeparators ) {
-            g2d.setColor( Color.GRAY );
-            g2d.drawLine( xTotalStart, y, xEnd, y );
-            g2d.setColor( Color.BLACK );
-        }
-
-        y += CGraphicsHelper.DefaultYShift( g2d );
-        CGraphicsHelper.DrawString( g2d, "Tax: ", x_starts[startedIndex + 2], y );
-        CGraphicsHelper.DrawString( g2d, productContainer.GetTax(), x_starts[startedIndex + 3], y );
-        y += CGraphicsHelper.ELEMENTS_SPACING;
-        if( withHorizontalSeparators ) {
-            g2d.setColor( Color.GRAY );
-            g2d.drawLine( xTotalStart, y, xEnd, y );
-            g2d.setColor( Color.BLACK );
-        }
-
-        y += CGraphicsHelper.DefaultYShift( g2d );
-        CGraphicsHelper.DrawString( g2d, "Total: ", x_starts[startedIndex + 2], y );
-        g2d.setFont( BOLD_DEFAULT_FONT );
-        CGraphicsHelper.DrawString( g2d, productContainer.GetTotal(), x_starts[startedIndex + 3], y );
-        g2d.setFont( DEFAULT_FONT );
-        y += CGraphicsHelper.ELEMENTS_SPACING;
-        if( withHorizontalSeparators ) {
-            g2d.setColor( Color.GRAY );
-            g2d.drawLine( xTotalStart, y, xEnd, y );
-            g2d.setColor( Color.BLACK );
-        }
-
-        FontMetrics fm = g2d.getFontMetrics();
-        return new CRectangle( l, y + fm.getDescent(), w, y - t );
+        return new CRectangle( left, b, width, b - top );
     }
 }

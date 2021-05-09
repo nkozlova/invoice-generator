@@ -1,4 +1,3 @@
-import CoordinatedTypes.CRectangle;
 import CoordinatedTypes.СCoordinatedString;
 
 import com.mifmif.common.regex.Generex;

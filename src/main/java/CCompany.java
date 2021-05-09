@@ -3,9 +3,7 @@ import CoordinatedTypes.СCoordinatedString;
 
 import com.mifmif.common.regex.Generex;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -26,6 +24,9 @@ public class CCompany implements IModel {
     private static final String URL = ".com";
     private static final String DOMAIN = "@gmail.com";
 
+    private static Boolean USE_ADDRESS_COUNTRY = CGraphicsHelper.IsRandomTrue( 0.21657754010695 ); // Показывать ли в адресе страну
+    private static Boolean USE_ADDRESS_STATE = USE_ADDRESS_COUNTRY || CGraphicsHelper.IsRandomTrue( 0.9429590017825 ); // Показывать ли в адресе штат
+
     private TCompanyRole role;
     private СCoordinatedString name = new СCoordinatedString();
     private СCoordinatedString phone = new СCoordinatedString();
@@ -35,9 +36,7 @@ public class CCompany implements IModel {
     private CIdNumbers idNumbers = new CIdNumbers();
     private CBank bank = new CBank();
 
-    public CCompany( TCompanyRole r ) {
-        role = r;
-    }
+    public CCompany( TCompanyRole r ) { role = r; }
 
     public СCoordinatedString GetName() { return name; }
     public СCoordinatedString GetPhone() { return phone; }
@@ -164,5 +163,51 @@ public class CCompany implements IModel {
         address.DrawRects( g2d );
         idNumbers.DrawRects( g2d );
         bank.DrawRects( g2d );
+    }
+
+    // Блок информации о компании
+    public CRectangle DrawInfo(Graphics2D g2d, int x, int maxWidth, int y ) {
+        int left = x;
+        int width = 0;
+        int top = y;
+
+        // Обязательные элементы
+        CRectangle rect = CGraphicsHelper.DrawMultilineText( g2d, name, x, x + maxWidth, y );
+        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+        width = Math.max( width, rect.GetWidth() );
+
+        rect = CGraphicsHelper.DrawMultilineText( g2d, address.GetLines(), x, x + maxWidth, y );
+        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+        width = Math.max( width, rect.GetWidth() );
+
+        rect = CGraphicsHelper.DrawStrings( g2d, address.GetZip(), address.GetCity(), x, y );
+        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+        width = Math.max( width, rect.GetWidth() );
+
+        // Необязательные элементы
+        if( USE_ADDRESS_STATE ) {
+            rect = USE_ADDRESS_COUNTRY ? CGraphicsHelper.DrawStrings( g2d, address.GetState(), address.GetCountry(), x, y )
+                    : CGraphicsHelper.DrawString( g2d, address.GetState(), x, y );
+            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+            width = Math.max( width, rect.GetWidth() );
+        }
+        if( CGraphicsHelper.IsRandomTrue( 0.3 ) ) {
+            rect = CGraphicsHelper.DrawString( g2d, "Phone: ", phone, x, y );
+            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+            width = Math.max( width, rect.GetWidth() );
+        }
+        if( CGraphicsHelper.IsRandomTrue( 0.3 ) ) {
+            rect = CGraphicsHelper.DrawString( g2d, "Website: ", webSite, x, y );
+            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+            width = Math.max( width, rect.GetWidth() );
+        }
+        if( CGraphicsHelper.IsRandomTrue( 0.3 ) ) {
+            rect = CGraphicsHelper.DrawString( g2d, "Email: ", email, x, y );
+            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
+            width = Math.max( width, rect.GetWidth() );
+        }
+
+        FontMetrics fm = g2d.getFontMetrics();
+        return new CRectangle( left, y + fm.getDescent() - CGraphicsHelper.DefaultYShift( g2d ), width, y - top );
     }
 }

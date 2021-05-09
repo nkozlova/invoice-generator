@@ -4,6 +4,8 @@ package CoordinatedTypes;
 public class CCoordinatedPrice extends СCoordinatedBaseType {
 
     private static final String MASK = "%.2f";
+    private static final String DOLLAR_DEF = "$";
+    private static final String EURO_DEF = "€";
 
     private static TUsedCurrency currency; // Валюта, общая на весь документ
     private static СCoordinatedString currencyName;
@@ -12,7 +14,16 @@ public class CCoordinatedPrice extends СCoordinatedBaseType {
     @Override
     public String GetValue() {
         // Пишем число с двумя знаками после запятой и валюту
-        return String.format( MASK, value ).concat( currency.toString() );
+        String res = String.format( MASK, value );
+        switch( currency ) {
+            case UC_Dollar:
+                res = res.concat( DOLLAR_DEF );
+                break;
+            case UC_Euro:
+                res = res.concat( EURO_DEF );
+                break;
+        }
+        return res;
     }
 
     public Double Get() { return value; }

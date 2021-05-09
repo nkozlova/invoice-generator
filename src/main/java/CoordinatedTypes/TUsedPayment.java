@@ -1,10 +1,8 @@
 package CoordinatedTypes;
 
 public enum TUsedPayment {
-
-    Ewallet, // Электронный кошелек
-    Cash,   // Наличные
-    Credit_cart // Кредитная карта
-
+    UP_Ewallet, // Электронный кошелек
+    UP_Cash,   // Наличные
+    UP_CreditCart // Кредитная карта
 }
 
