@@ -1,10 +1,13 @@
 import CoordinatedTypes.CRectangle;
+import CoordinatedTypes.TUsedLocale;
+import CoordinatedTypes.СCoordinatedBaseType;
 import CoordinatedTypes.СCoordinatedString;
 
 import com.mifmif.common.regex.Generex;
 
 import java.awt.*;
 import java.io.*;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -20,23 +23,38 @@ public class CCompany implements IModel {
     private static final String BANK_DEF = "  Bank:\n";
     private static final String EMPTY_STR = "";
     private static final String DELIMITER = ",";
-    private static final String GB_PHONE_PATTERN = "((08|09) ([0-9]){3} ([0-9]{4}))"; // Шаблон номеров Англии
     private static final String URL = ".com";
     private static final String DOMAIN = "@gmail.com";
-
-    private static Boolean USE_ADDRESS_COUNTRY = CGraphicsHelper.IsRandomTrue( 0.21657754010695 ); // Показывать ли в адресе страну
-    private static Boolean USE_ADDRESS_STATE = USE_ADDRESS_COUNTRY || CGraphicsHelper.IsRandomTrue( 0.9429590017825 ); // Показывать ли в адресе штат
 
     private TCompanyRole role;
     private СCoordinatedString name = new СCoordinatedString();
     private СCoordinatedString phone = new СCoordinatedString();
     private СCoordinatedString email = new СCoordinatedString();
     private СCoordinatedString webSite = new СCoordinatedString();
-    private CAddress address = new CAddress();
+    private CAddress address;
     private CIdNumbers idNumbers = new CIdNumbers();
     private CBank bank = new CBank();
+    private TUsedLocale localeType;
 
-    public CCompany( TCompanyRole r ) { role = r; }
+    public CCompany( TCompanyRole r ) {
+        role = r;
+        if( role == TCompanyRole.CR_Vendor || CGraphicsHelper.IsRandomTrue( 0.5 ) ) { // Немного повышаем вероятность всех комапаний быть из одной страны
+            localeType = СCoordinatedBaseType.LOCALE.GetLocaleType();
+        } else {
+            Random random = new Random();
+            switch( random.nextInt( TUsedLocale.values().length ) ) {
+                case 0:
+                    localeType = TUsedLocale.UL_US;
+                    break;
+                case 1:
+                    localeType = TUsedLocale.UL_UK;
+                    break;
+                default:
+                    localeType = TUsedLocale.UL_Canada;
+            }
+        }
+        address = new CAddress( localeType );
+    }
 
     public СCoordinatedString GetName() { return name; }
     public СCoordinatedString GetPhone() { return phone; }
@@ -106,12 +124,6 @@ public class CCompany implements IModel {
                         if( addressData.length > 0 ) {
                             address.SetCity( CStringsHelper.ToUpperCaseNames( addressData[0].substring( 1 ) ) ); // city
                         }
-                        if( addressData.length > 1 ) {
-                            address.SetState( CStringsHelper.ToUpperCaseNames( addressData[1].trim() ) ); // state
-                        }
-                        if( addressData.length > 2 ) {
-                            address.SetCountry( CStringsHelper.ToUpperCaseNames( addressData[2].substring( 0, addressData[2].length() - 1 ) ) ); // country
-                        }
                     }
                     address.Generate();
 
@@ -127,8 +139,7 @@ public class CCompany implements IModel {
             System.out.println( "Failed, CCompany" );
         }
 
-        // TODO зависимость от языка...
-        Generex phoneGenerex = new Generex( GB_PHONE_PATTERN );
+        Generex phoneGenerex = new Generex( getPhonePattern() );
         phone.Set( phoneGenerex.random() );
 
         email.Set( name.Get().length() < 6 ? name.Get().concat( DOMAIN ) :
@@ -166,31 +177,21 @@ public class CCompany implements IModel {
     }
 
     // Блок информации о компании
-    public CRectangle DrawInfo(Graphics2D g2d, int x, int maxWidth, int y ) {
+    public CRectangle DrawInfo( Graphics2D g2d, int x, int y ) {
         int left = x;
         int width = 0;
         int top = y;
 
         // Обязательные элементы
-        CRectangle rect = CGraphicsHelper.DrawMultilineText( g2d, name, x, x + maxWidth, y );
+        CRectangle rect = CGraphicsHelper.DrawString( g2d, name, x, y );
         y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
         width = Math.max( width, rect.GetWidth() );
 
-        rect = CGraphicsHelper.DrawMultilineText( g2d, address.GetLines(), x, x + maxWidth, y );
-        y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-        width = Math.max( width, rect.GetWidth() );
-
-        rect = CGraphicsHelper.DrawStrings( g2d, address.GetZip(), address.GetCity(), x, y );
+        rect = address.DrawInfo( g2d, x, y );
         y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
         width = Math.max( width, rect.GetWidth() );
 
         // Необязательные элементы
-        if( USE_ADDRESS_STATE ) {
-            rect = USE_ADDRESS_COUNTRY ? CGraphicsHelper.DrawStrings( g2d, address.GetState(), address.GetCountry(), x, y )
-                    : CGraphicsHelper.DrawString( g2d, address.GetState(), x, y );
-            y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
-            width = Math.max( width, rect.GetWidth() );
-        }
         if( CGraphicsHelper.IsRandomTrue( 0.3 ) ) {
             rect = CGraphicsHelper.DrawString( g2d, "Phone: ", phone, x, y );
             y = rect.GetBottom() + CGraphicsHelper.DefaultYShift( g2d );
@@ -209,5 +210,18 @@ public class CCompany implements IModel {
 
         FontMetrics fm = g2d.getFontMetrics();
         return new CRectangle( left, y + fm.getDescent() - CGraphicsHelper.DefaultYShift( g2d ), width, y - top );
+    }
+
+    private String getPhonePattern() {
+        switch( localeType ) {
+            case UL_US:
+            case UL_Canada:
+                return CGraphicsHelper.IsRandomTrue( 0.5 ) ? "\\+1 \\([2-9][0-9]{2}\\) [2-9][0-9]{2}-[0-9]{4}"
+                        : "1-[2-9][0-9]{2}-[2-9][0-9]{2}-[0-9]{4}";
+            case UL_UK:
+                return "(08|09) ([0-9]){3} ([0-9]{4})";
+        }
+        assert( false );
+        return "Smth else";
     }
 }

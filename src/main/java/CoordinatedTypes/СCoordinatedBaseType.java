@@ -7,6 +7,7 @@ import java.util.List;
 // Базовый тип для хранения значения и его координат в готовом инвойсе
 public abstract class СCoordinatedBaseType {
 
+    public static final CUsedLocale LOCALE = new CUsedLocale(); // Локаль, общая на весь документ
     private static final String VALUE_KEY = "{value: '";
     private static final String COORDINATE_KEY = "', coords: [";
     private static final String END_LINE = "]}\n";

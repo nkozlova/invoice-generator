@@ -21,7 +21,7 @@ public class CRectangle {
     public Integer GetWidth() { return right - left; }
     public Integer GetHeight() { return bottom - top; }
 
-    public CRectangle(int l, int b, int w, int h ) {
+    public CRectangle( int l, int b, int w, int h ) {
         assert( l >= 0 && b >= h && w >= 0 && h >= 0 );
         left = l;
         bottom = b;

@@ -1,7 +1,6 @@
-import CoordinatedTypes.CCoordinatedProcent;
+import CoordinatedTypes.CCoordinatedPercent;
 import CoordinatedTypes.CCoordinatedPrice;
 import CoordinatedTypes.CRectangle;
-import CoordinatedTypes.TUsedCurrency;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
@@ -26,30 +25,20 @@ public class CProductContainer implements IModel {
 
     private List<String> headers;
     private CCoordinatedPrice tax = new CCoordinatedPrice(); // Сумма налога
-    private CCoordinatedProcent taxRate = new CCoordinatedProcent(); // Ставка налога, в процентах (0-15)
+    private CCoordinatedPercent taxRate = new CCoordinatedPercent(); // Ставка налога, в процентах (0-15)
     private CCoordinatedPrice totalSum = new CCoordinatedPrice();    // total без учета налога
     private CCoordinatedPrice total = new CCoordinatedPrice();
     private List<CProduct> products;
 
     public List<String> GetHeaders() { return headers; }
     public CCoordinatedPrice GetTax() { return tax; }
-    public CCoordinatedProcent GetTaxRate() { return taxRate; }
+    public CCoordinatedPercent GetTaxRate() { return taxRate; }
     public CCoordinatedPrice GetTotalSum() { return totalSum; }
     public CCoordinatedPrice GetTotal() { return total; }
     public List<CProduct> GetProducts() { return products; }
 
     @Override
     public void Generate() {
-        Random random = new Random();
-        // Устанавливаем валюту
-        switch( random.nextInt( TUsedCurrency.values().length ) ) {
-            case 0:
-                CCoordinatedPrice.SetCurrency( TUsedCurrency.UC_Dollar );
-                break;
-            default:
-                CCoordinatedPrice.SetCurrency( TUsedCurrency.UC_Euro );
-        }
-
         headers = new ArrayList<>();
         headers.add( "Product" );
         headers.add( "Price" );
@@ -57,6 +46,7 @@ public class CProductContainer implements IModel {
         headers.add( "Total Price" );
         totalSum.Set( 0.0 );
 
+        Random random = new Random();
         int count = random.nextInt( 6 ) + 1;
         products = new ArrayList<>( count );
 
