@@ -59,7 +59,7 @@ public class CUsedLocale {
         Generex delimiterGenerex = new Generex( "[\\-\\/a]" ); // a заменим на точку, если выпадет такой разделитель
         String delimiter = delimiterGenerex.random();
         if( delimiter.equals( "a" ) ) {
-            delimiter = "\\.";
+            delimiter = ".";
         }
 
         String year = isRandomTrue( 0.5 ) ? "yyyy" : "yy";

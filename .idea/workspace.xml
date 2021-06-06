@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="131fb123-1ed4-4091-9a85-5efe7a169149" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCompany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CCompany.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CInvoiceDates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CInvoiceDates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CInvoiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CInvoiceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CProductContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CProductContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPrice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedProcent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CRectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedCurrency.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CAddress.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CAddress.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CCompany.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CCompany.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CInvoiceDates.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CInvoiceDates.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CInvoiceModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CInvoiceModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CProductContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CProductContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CoordinatedTypes/CCoordinatedPrice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CoordinatedTypes/CCoordinatedPrice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CoordinatedTypes/CCoordinatedProcent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CoordinatedTypes/TUsedCurrency.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CoordinatedTypes/СCoordinatedBaseType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CoordinatedTypes/СCoordinatedBaseType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -54,7 +35,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -71,6 +52,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TUsedLocale.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedLocale.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -121,16 +111,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CUsedLocale.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CUsedLocale.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+            <state relative-caret-position="287">
+              <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#GetLocale#0;class#CUsedLocale#0" />
                 <element signature="method#GetCurrency#0;class#CUsedLocale#0" />
-                <element signature="method#GetDateFormat#0;class#CUsedLocale#0" />
                 <element signature="method#isRandomTrue#0;class#CUsedLocale#0" />
               </folding>
             </state>
@@ -142,20 +131,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
               <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CAddress.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CAddress.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-425">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1013#1014#0" expanded="true" />
-                <element signature="e#1038#1039#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -243,13 +218,13 @@
         <option value="$PROJECT_DIR$/src/main/java/CGraphicsHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/CAddress.java" />
         <option value="$PROJECT_DIR$/src/main/java/CCompany.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedDate.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPercent.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPrice.java" />
         <option value="$PROJECT_DIR$/src/test/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/CInvoiceModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java" />
       </list>
     </option>
   </component>
@@ -269,7 +244,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="697" />
@@ -292,6 +267,27 @@
               <item name="InvoiceGenerator" type="b2602c69:ProjectViewProjectNode" />
               <item name="InvoiceGenerator" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InvoiceGenerator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InvoiceGenerator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InvoiceGenerator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InvoiceGenerator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InvoiceGenerator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InvoiceGenerator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="CoordinatedTypes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="InvoiceGenerator" type="b2602c69:ProjectViewProjectNode" />
@@ -441,15 +437,16 @@
       <workItem from="1619120727114" duration="25951000" />
       <workItem from="1620577371287" duration="9220000" />
       <workItem from="1622561281202" duration="6664000" />
-      <workItem from="1622664236719" duration="36857000" />
+      <workItem from="1622664236719" duration="37577000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263982000" />
+    <option name="totallyTimeSpent" value="264702000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -461,11 +458,11 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2725926" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2725926" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27013177" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27013177" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24963397" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3288889" />
@@ -846,13 +843,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedLocale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedInteger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -893,20 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GetLocale#0;class#CUsedLocale#0" />
-            <element signature="method#GetCurrency#0;class#CUsedLocale#0" />
-            <element signature="method#GetDateFormat#0;class#CUsedLocale#0" />
-            <element signature="method#isRandomTrue#0;class#CUsedLocale#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -938,16 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -970,6 +936,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedDate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedLocale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#GetLocale#0;class#CUsedLocale#0" />
+            <element signature="method#GetCurrency#0;class#CUsedLocale#0" />
+            <element signature="method#isRandomTrue#0;class#CUsedLocale#0" />
+          </folding>
         </state>
       </provider>
     </entry>
