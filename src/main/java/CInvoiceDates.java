@@ -35,10 +35,10 @@ public class CInvoiceDates implements IModel {
     }
 
     @Override
-    public String GetData() {
-        return invoiceDate.Show( INVOICE_DATA_DEF ).
-                concat( expeditionDate.Show( EXPEDITION_DATA_DEF ) ).
-                concat( paymentDate.Show( PAYMENT_DATA_DEF ) );
+    public String GetData( Boolean withCoords ) {
+        return invoiceDate.Show( INVOICE_DATA_DEF, withCoords ).
+                concat( expeditionDate.Show( EXPEDITION_DATA_DEF, withCoords ) ).
+                concat( paymentDate.Show( PAYMENT_DATA_DEF, withCoords ) );
     }
 
     @Override

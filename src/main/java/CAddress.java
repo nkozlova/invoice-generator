@@ -1,6 +1,5 @@
 import CoordinatedTypes.CRectangle;
 import CoordinatedTypes.TUsedLocale;
-import CoordinatedTypes.СCoordinatedBaseType;
 import CoordinatedTypes.СCoordinatedString;
 
 import com.mifmif.common.regex.Generex;
@@ -55,12 +54,12 @@ public class CAddress implements IModel {
     }
 
     @Override
-    public String GetData() {
-        return lines.Show( LINES_DEF ).
-                concat( zip.Show( ZIP_DEF ) ).
-                concat( city.Show( CITY_DEF ) ).
-                concat( state.Show( STATE_DEF ) ).
-                concat( country.Show( COUNTRY_DEF ) );
+    public String GetData( Boolean withCoords ) {
+        return lines.Show( LINES_DEF, withCoords ).
+                concat( zip.Show( ZIP_DEF, withCoords ) ).
+                concat( city.Show( CITY_DEF, withCoords ) ).
+                concat( state.Show( STATE_DEF, withCoords ) ).
+                concat( country.Show( COUNTRY_DEF, withCoords ) );
     }
 
     @Override

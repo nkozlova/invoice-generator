@@ -108,14 +108,14 @@ public class CProductContainer implements IModel {
     }
 
     @Override
-    public String GetData() {
-        String data = totalSum.Show( TOTAL_SUM_DEF ).
-                concat( taxRate.Show( TAX_RATE_DEF ) ).
-                concat( tax.Show( TAX_DEF ) ).
-                concat( total.Show( TOTAL_DEF ) ).
+    public String GetData( Boolean withCoords ) {
+        String data = totalSum.Show( TOTAL_SUM_DEF, withCoords ).
+                concat( taxRate.Show( TAX_RATE_DEF, withCoords ) ).
+                concat( tax.Show( TAX_DEF, withCoords ) ).
+                concat( total.Show( TOTAL_DEF, withCoords ) ).
                 concat( PRODUCTS_DEF );
         for( Integer i = 0; i < products.size(); i++ ) {
-            data = data.concat( products.get( i ).GetData() );
+            data = data.concat( products.get( i ).GetData( withCoords ) );
         }
         return data;
     }

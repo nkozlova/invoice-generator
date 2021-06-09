@@ -51,11 +51,11 @@ public class CProduct implements IModel {
     }
 
     @Override
-    public String GetData() {
-        return description.Show( DESCRIPTION_DEF ).
-                concat( price.Show( PRICE_DEF ) ).
-                concat( quantity.Show( QUANTITY_DEF ) ).
-                concat( totalPrice.Show( TOTAL_DEF ) );
+    public String GetData( Boolean withCoords ) {
+        return description.Show( DESCRIPTION_DEF, withCoords ).
+                concat( price.Show( PRICE_DEF, withCoords ) ).
+                concat( quantity.Show( QUANTITY_DEF, withCoords ) ).
+                concat( totalPrice.Show( TOTAL_DEF, withCoords ) );
     }
 
     @Override

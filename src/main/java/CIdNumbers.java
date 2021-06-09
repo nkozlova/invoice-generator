@@ -28,8 +28,9 @@ public class CIdNumbers implements IModel {
     }
 
     @Override
-    public String GetData() {
-        return cid.Show( CID_DEF ).concat( vat.Show( VAT_DEF ) );
+    public String GetData( Boolean withCoords ) {
+        return cid.Show( CID_DEF, withCoords ).
+                concat( vat.Show( VAT_DEF, withCoords ) );
     }
 
     @Override

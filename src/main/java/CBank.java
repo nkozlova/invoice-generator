@@ -43,12 +43,12 @@ public class CBank implements IModel {
     }
 
     @Override
-    public String GetData() {
-        return name.Show( NAME_DEF ).
-                concat( iban.Show( IBAN_DEF ) ).
-                concat( swift.Show( SWIFT_DEF ) ).
-                concat( sortCode.Show( SORT_CODE_DEF ) ).
-                concat( bankAccount.Show( BANK_ACCOUNT_DEF ) );
+    public String GetData( Boolean withCoords ) {
+        return name.Show( NAME_DEF, withCoords ).
+                concat( iban.Show( IBAN_DEF, withCoords ) ).
+                concat( swift.Show( SWIFT_DEF, withCoords ) ).
+                concat( sortCode.Show( SORT_CODE_DEF, withCoords ) ).
+                concat( bankAccount.Show( BANK_ACCOUNT_DEF, withCoords ) );
     }
 
     @Override

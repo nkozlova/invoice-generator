@@ -154,15 +154,15 @@ public class CCompany implements IModel {
     }
 
     @Override
-    public String GetData() {
+    public String GetData( Boolean withCoords ) {
         return ROLE_DEF.concat( GetRole() ).
-                concat( name.Show( NAME_DEF ) ).
-                concat( phone.Show( PHONE_DEF ) ).
-                concat( email.Show( EMAIL_DEF ) ).
-                concat( webSite.Show( WEBSITE_DEF ) ).
-                concat( ADDRESS_DEF ).concat( address.GetData() ).
-                concat( NUMBERS_DEF ).concat( idNumbers.GetData() ).
-                concat( BANK_DEF ).concat( bank.GetData() );
+                concat( name.Show( NAME_DEF, withCoords ) ).
+                concat( phone.Show( PHONE_DEF, withCoords ) ).
+                concat( email.Show( EMAIL_DEF, withCoords ) ).
+                concat( webSite.Show( WEBSITE_DEF, withCoords ) ).
+                concat( ADDRESS_DEF ).concat( address.GetData( withCoords ) ).
+                concat( NUMBERS_DEF ).concat( idNumbers.GetData( withCoords ) ).
+                concat( BANK_DEF ).concat( bank.GetData( withCoords ) );
     }
 
     @Override

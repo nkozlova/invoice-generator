@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="131fb123-1ed4-4091-9a85-5efe7a169149" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CBank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CCompany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CCompany.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CIdNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CIdNumbers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CInvoiceDates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CInvoiceDates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CInvoiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CInvoiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CInvoiceNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CInvoiceNumbers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CPaymentInfos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CPaymentInfos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CProductContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CProductContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IModel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -15,15 +27,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CInvoiceModel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CInvoiceModel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="540" column="18" lean-forward="true" selection-start-line="540" selection-start-column="18" selection-end-line="540" selection-end-column="18" />
+            <state relative-caret-position="1630">
+              <caret line="176" column="28" selection-start-line="176" selection-start-column="28" selection-end-line="176" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Generate#0;class#CInvoiceModel#0" />
-                <element signature="method#GetData#0;class#CInvoiceModel#0" />
                 <element signature="method#DrawRects#0;class#CInvoiceModel#0" />
                 <element signature="method#drawVendorLogo#0;class#CInvoiceModel#0" />
                 <element signature="method#drawBarcode#0;class#CInvoiceModel#0" />
@@ -35,20 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
+      <file leaf-file-name="CInvoiceDates.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceDates.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CCoordinatedDate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedDate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="24" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="24" />
+            <state relative-caret-position="236">
+              <caret line="39" column="76" selection-start-line="39" selection-start-column="76" selection-end-line="39" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,20 +58,49 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TUsedLocale.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedLocale.java">
+      <file leaf-file-name="CGraphicsHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CGraphicsHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+            <state relative-caret-position="267">
+              <caret line="64" column="125" selection-start-line="64" selection-start-column="125" selection-end-line="64" selection-end-column="125" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#DrawString#0;class#CGraphicsHelper#0" />
+                <element signature="method#DrawString#1;class#CGraphicsHelper#0" />
+                <element signature="method#DrawString#2;class#CGraphicsHelper#0" />
+                <element signature="method#DrawMultilineText#0;class#CGraphicsHelper#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="СCoordinatedBaseType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java">
+      <file leaf-file-name="CProductContainer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CProductContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            <state relative-caret-position="260">
+              <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#DrawRects#0;class#CProductContainer#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CIdNumbers.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CIdNumbers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CInvoiceNumbers.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceNumbers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="32" column="72" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,50 +108,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CCoordinatedPrice.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPrice.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CCompany.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CCompany.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#GetRole#0;class#CCompany#0" />
-                <element signature="method#Generate#0;class#CCompany#0" />
-                <element signature="method#GetData#0;class#CCompany#0" />
-                <element signature="method#DrawRects#0;class#CCompany#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CCoordinatedPercent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPercent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CUsedLocale.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java">
+      <file leaf-file-name="CPaymentInfos.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CPaymentInfos.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="287">
-              <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
+              <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#GetLocale#0;class#CUsedLocale#0" />
-                <element signature="method#GetCurrency#0;class#CUsedLocale#0" />
-                <element signature="method#isRandomTrue#0;class#CUsedLocale#0" />
+                <element signature="e#948#949#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,8 +123,34 @@
       <file leaf-file-name="CProduct.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/CProduct.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+            <state relative-caret-position="136">
+              <caret line="56" column="63" selection-start-line="56" selection-start-column="63" selection-end-line="56" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CBank.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CBank.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CCompany.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CCompany.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="164" column="68" selection-start-line="164" selection-start-column="68" selection-end-line="164" selection-end-column="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#GetRole#0;class#CCompany#0" />
+                <element signature="method#DrawRects#0;class#CCompany#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -148,7 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>headers</find>
       <find>products</find>
       <find>recta</find>
       <find>Rectangle</find>
@@ -178,6 +197,7 @@
       <find>left</find>
       <find>DEFINITION_COLUMN_WIDTH</find>
       <find>VALUE_SHIFT</find>
+      <find>invoiceLocaleType</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,29 +222,29 @@
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedPayment.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedUsedPayment.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedInteger.java" />
-        <option value="$PROJECT_DIR$/src/main/java/IModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CIdNumbers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CProduct.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CPaymentInfos.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CInvoiceNumbers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CBank.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedProcent.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedCurrency.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CProductContainer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CInvoiceDates.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedString.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedLocale.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CRectangle.java" />
         <option value="$PROJECT_DIR$/src/main/java/CGraphicsHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CAddress.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CCompany.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedDate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPercent.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPrice.java" />
         <option value="$PROJECT_DIR$/src/test/java/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CInvoiceModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java" />
+        <option value="$PROJECT_DIR$/src/main/java/IModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CAddress.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CBank.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CCompany.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CIdNumbers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CInvoiceDates.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CInvoiceNumbers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CPaymentInfos.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CProduct.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CProductContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CInvoiceModel.java" />
       </list>
     </option>
   </component>
@@ -285,14 +305,6 @@
               <item name="InvoiceGenerator" type="b2602c69:ProjectViewProjectNode" />
               <item name="InvoiceGenerator" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="CoordinatedTypes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InvoiceGenerator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InvoiceGenerator" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -329,7 +341,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.CInvoiceModel">
     <configuration name="CInvoiceModel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CInvoiceModel" />
       <module name="InvoiceGenerator" />
@@ -437,16 +449,15 @@
       <workItem from="1619120727114" duration="25951000" />
       <workItem from="1620577371287" duration="9220000" />
       <workItem from="1622561281202" duration="6664000" />
-      <workItem from="1622664236719" duration="37577000" />
+      <workItem from="1622664236719" duration="45986000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264702000" />
+    <option name="totallyTimeSpent" value="273111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -458,11 +469,11 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2725926" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3614815" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27013177" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27013177" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24963397" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3288889" />
@@ -516,7 +527,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="71" />
+      <option name="time" value="74" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -719,30 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/IModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CIdNumbers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CBank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="65" column="22" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedCurrency.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -757,36 +744,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CGraphicsHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="64" column="125" selection-start-line="64" selection-start-column="125" selection-end-line="64" selection-end-column="125" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#DrawString#0;class#CGraphicsHelper#0" />
-            <element signature="method#DrawString#1;class#CGraphicsHelper#0" />
-            <element signature="method#DrawString#2;class#CGraphicsHelper#0" />
-            <element signature="method#DrawMultilineText#0;class#CGraphicsHelper#0" />
-            <element signature="e#4765#4766#0" expanded="true" />
-            <element signature="e#4830#4831#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar!/com/mifmif/common/regex/Generex.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
           <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceDates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -814,35 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CProductContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GetData#0;class#CProductContainer#0" />
-            <element signature="method#DrawRects#0;class#CProductContainer#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CPaymentInfos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceNumbers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="79" selection-start-line="12" selection-start-column="79" selection-end-line="12" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedInteger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -857,42 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CAddress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1038#1039#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CCompany.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GetRole#0;class#CCompany#0" />
-            <element signature="method#Generate#0;class#CCompany#0" />
-            <element signature="method#GetData#0;class#CCompany#0" />
-            <element signature="method#DrawRects#0;class#CCompany#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPercent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -900,42 +796,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPrice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="540" column="18" lean-forward="true" selection-start-line="540" selection-start-column="18" selection-end-line="540" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Generate#0;class#CInvoiceModel#0" />
-            <element signature="method#GetData#0;class#CInvoiceModel#0" />
-            <element signature="method#DrawRects#0;class#CInvoiceModel#0" />
-            <element signature="method#drawVendorLogo#0;class#CInvoiceModel#0" />
-            <element signature="method#drawBarcode#0;class#CInvoiceModel#0" />
-            <element signature="method#drawInvoiceInfo#0;class#CInvoiceModel#0" />
-            <element signature="method#drawAsTableValue#0;class#CInvoiceModel#0" />
-            <element signature="method#drawCompanyInfo#0;class#CInvoiceModel#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
@@ -949,6 +813,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CCoordinatedPrice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/TUsedLocale.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -958,13 +829,150 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/CUsedLocale.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
+        <state relative-caret-position="248">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#CUsedLocale#0;class#CUsedLocale#0" />
             <element signature="method#GetLocale#0;class#CUsedLocale#0" />
-            <element signature="method#GetCurrency#0;class#CUsedLocale#0" />
             <element signature="method#isRandomTrue#0;class#CUsedLocale#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/IModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinatedTypes/СCoordinatedBaseType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="31" column="67" selection-start-line="31" selection-start-column="67" selection-end-line="31" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CAddress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="61" column="61" selection-start-line="61" selection-start-column="61" selection-end-line="61" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Generate#0;class#CAddress#0" />
+            <element signature="method#DrawInfo#0;class#CAddress#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CBank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CCompany.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="164" column="68" selection-start-line="164" selection-start-column="68" selection-end-line="164" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#GetRole#0;class#CCompany#0" />
+            <element signature="method#DrawRects#0;class#CCompany#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CGraphicsHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="64" column="125" selection-start-line="64" selection-start-column="125" selection-end-line="64" selection-end-column="125" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#DrawString#0;class#CGraphicsHelper#0" />
+            <element signature="method#DrawString#1;class#CGraphicsHelper#0" />
+            <element signature="method#DrawString#2;class#CGraphicsHelper#0" />
+            <element signature="method#DrawMultilineText#0;class#CGraphicsHelper#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CIdNumbers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceDates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="39" column="76" selection-start-line="39" selection-start-column="76" selection-end-line="39" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceNumbers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="32" column="72" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CPaymentInfos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+          <folding>
+            <element signature="e#948#949#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CProduct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="56" column="63" selection-start-line="56" selection-start-column="63" selection-end-line="56" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CProductContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#DrawRects#0;class#CProductContainer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CInvoiceModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1630">
+          <caret line="176" column="28" selection-start-line="176" selection-start-column="28" selection-end-line="176" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Generate#0;class#CInvoiceModel#0" />
+            <element signature="method#DrawRects#0;class#CInvoiceModel#0" />
+            <element signature="method#drawVendorLogo#0;class#CInvoiceModel#0" />
+            <element signature="method#drawBarcode#0;class#CInvoiceModel#0" />
+            <element signature="method#drawInvoiceInfo#0;class#CInvoiceModel#0" />
+            <element signature="method#drawAsTableValue#0;class#CInvoiceModel#0" />
+            <element signature="method#drawCompanyInfo#0;class#CInvoiceModel#0" />
           </folding>
         </state>
       </provider>

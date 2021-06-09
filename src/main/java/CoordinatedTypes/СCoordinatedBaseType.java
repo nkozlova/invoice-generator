@@ -10,6 +10,7 @@ public abstract class СCoordinatedBaseType {
     public static final CUsedLocale LOCALE = new CUsedLocale(); // Локаль, общая на весь документ
     private static final String VALUE_KEY = "{value: '";
     private static final String COORDINATE_KEY = "', coords: [";
+    private static final String SIMPLE_END_LINE = "\n";
     private static final String END_LINE = "]}\n";
     private static final String COORDINATE_DELIMITER = ", ";
     private static final String EMPTY_STR = "";
@@ -24,9 +25,15 @@ public abstract class СCoordinatedBaseType {
     // Получить текстовое представление хранимого значения, переопределяется в наследнике
     public abstract String GetValue();
 
-    // Вывод значения и его координат на изображении инвойса
-    public String Show( String key ) {
-        if( coordinates.size() == 0 ){
+    // Вывод значения и его координат (опционально) на изображении инвойса
+    public String Show( String key, Boolean withCoords ) {
+        if( !withCoords ) {
+            // Вывод в формате: <key>: <value>
+            return key.concat( GetValue() ).concat( SIMPLE_END_LINE );
+        }
+
+        if( coordinates.size() == 0 ) {
+            // Координат нет, поле не попало на документ, ничего не выводим
             return EMPTY_STR;
         }
         // Вывод в формате: <key>: {value: '<value>', coords: [(<l>, <t>, <r>, <b>), (<l>, <t>, <r>, <b>)]}

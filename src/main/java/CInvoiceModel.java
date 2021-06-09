@@ -29,8 +29,6 @@ public class CInvoiceModel implements IModel {
     private static Boolean USE_REMIT_TO_ON_TOP = CGraphicsHelper.IsRandomTrue( 0.4067333939945401 ); // Будет ли информация о remit-to наверху
     private static final int VALUE_SHIFT = 5;
 
-    private CUsedLocale invoiceLocaleType; // Тип используемой локали, которая будет одна на документ
-
     private CInvoiceDates invoiceDates = new CInvoiceDates();
     private CInvoiceNumbers invoiceNumbers = new CInvoiceNumbers();
     private CPaymentInfos paymentInfos = new CPaymentInfos();
@@ -66,31 +64,31 @@ public class CInvoiceModel implements IModel {
         productContainer.Generate();
     }
 
-    public void Show() { System.out.print( GetData() ); }
+    public void Show() { System.out.print( GetData( false ) ); }
 
     @Override
-    public String GetData() {
-        String res = DATES_DEF.concat( invoiceDates.GetData() ).
-                concat( NUMBERS_DEF ).concat( invoiceNumbers.GetData() ).
-                concat( PAYMENTS_INFO_DEF ).concat( paymentInfos.GetData() ).
+    public String GetData(  Boolean withCoords ) {
+        String res = DATES_DEF.concat( invoiceDates.GetData( withCoords ) ).
+                concat( NUMBERS_DEF ).concat( invoiceNumbers.GetData( withCoords ) ).
+                concat( PAYMENTS_INFO_DEF ).concat( paymentInfos.GetData( withCoords ) ).
                 concat( COMPANIES_DEF );
         if( USE_BU ) {
-            res = res.concat( bu.GetData() );
+            res = res.concat( bu.GetData( withCoords ) );
         }
-        res = res.concat( vendor.GetData() );
+        res = res.concat( vendor.GetData( withCoords ) );
         if( USE_SHIP_TO ) {
-            res = res.concat( shipTo.GetData() );
+            res = res.concat( shipTo.GetData( withCoords ) );
         }
         if( USE_BILL_TO ) {
-            res = res.concat( billTo.GetData() );
+            res = res.concat( billTo.GetData( withCoords ) );
         }
         if( USE_SHIPPER ) {
-            res = res.concat( shipper.GetData() );
+            res = res.concat( shipper.GetData( withCoords ) );
         }
         if( USE_REMIT_TO ) {
-            res = res.concat( remitTo.GetData() );
+            res = res.concat( remitTo.GetData( withCoords ) );
         }
-        return res.concat( PRODUCT_CONTAINER_DEF ).concat( productContainer.GetData() );
+        return res.concat( PRODUCT_CONTAINER_DEF ).concat( productContainer.GetData( withCoords ) );
     }
 
     @Override
@@ -140,7 +138,7 @@ public class CInvoiceModel implements IModel {
             File file = new File( filePathStart.concat( currentData.toString() ).concat( ".txt" ) );
             file.createNewFile();
             FileWriter writer = new FileWriter( file );
-            writer.write( GetData() );
+            writer.write( GetData( true ) );
             writer.close();
         } catch( IOException e ) {
             e.printStackTrace();
@@ -167,8 +165,8 @@ public class CInvoiceModel implements IModel {
             e.printStackTrace();
             return;
         }
+        invoice.Show(); // Вывод сгенерированных данных
         invoice.CreateAndSaveImage( args.length > 0 ? args[0] : "C:\\invoice-images-generate\\", false ); // Рисуем и созраняем изображение
-        invoice.Show(); // Вывод данных
     }
 
     // Нарисуем инвойс

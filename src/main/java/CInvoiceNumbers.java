@@ -27,10 +27,10 @@ public class CInvoiceNumbers implements IModel {
     }
 
     @Override
-    public String GetData() {
-        return invoiceNumber.Show( INVOICE_NUMBER_DEF ).
-                concat( purchaseOrderNumber.Show( PURCHASE_ORDER_NUMBER_DEF ) ).
-                concat( clientNumber.Show( CLIENT_NUMBER_DEF ) );
+    public String GetData( Boolean withCoords ) {
+        return invoiceNumber.Show( INVOICE_NUMBER_DEF, withCoords ).
+                concat( purchaseOrderNumber.Show( PURCHASE_ORDER_NUMBER_DEF, withCoords ) ).
+                concat( clientNumber.Show( CLIENT_NUMBER_DEF, withCoords ) );
     }
 
     @Override

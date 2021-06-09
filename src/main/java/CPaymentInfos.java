@@ -29,7 +29,9 @@ public class CPaymentInfos implements IModel {
     }
 
     @Override
-    public String GetData() { return usedPayment.Show( USED_PAYMENT_DEF ); }
+    public String GetData( Boolean withCoords ) {
+        return usedPayment.Show( USED_PAYMENT_DEF, withCoords );
+    }
 
     @Override
     public void DrawRects( Graphics2D g2d ) {
